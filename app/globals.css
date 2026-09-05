@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@keyframes marquee-scroll-ltr {
+  0% { 
+    transform: translateX(-50%); 
+  }
+  100% { 
+    transform: translateX(0); 
+  }
+}
+
+.animate-marquee-scroll-ltr {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-ltr 20s linear infinite;
+}
+
+.animate-marquee-scroll-ltr:hover {
+  animation-play-state: paused;
+}
