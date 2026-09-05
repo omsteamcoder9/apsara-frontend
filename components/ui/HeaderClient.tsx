@@ -269,12 +269,12 @@ export default function HeaderClient() {
         
         {/* --- GRID CONTAINER --- */}
         <div className="bg-[#FBF7F1] border-b border-[#D4AF37]/30 shadow-sm">
-          <div className="max-w-7xl mx-auto grid grid-cols-[auto_1fr] items-center">
+          <div className="max-w-7xl mx-auto grid grid-cols-[auto_1fr] items-start sm:items-center">
             
             {/* LEFT COLUMN: LOGO SPANNING BOTH ROWS */}
-            <div className="row-span-2 px-1 sm:px-2 md:px-3 py-1 flex items-center bg-[#FBF7F1]">
+            <div className="row-span-2 px-1 sm:px-2 md:px-3 py-2 sm:py-1 flex items-start sm:items-center bg-[#FBF7F1]">
               <Link href="/" className="group relative flex items-center">
-                <div className="relative w-20 h-10 sm:w-28 sm:h-14 md:w-36 md:h-16 lg:w-38 lg:h-20 overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                <div className="relative w-14 h-7 sm:w-28 sm:h-14 md:w-36 md:h-16 lg:w-38 lg:h-20 overflow-hidden transition-transform duration-300 group-hover:scale-105">
                   <Image
                     src={`${STATIC_URL}/logo.webp`}
                     alt={siteName}
@@ -287,41 +287,42 @@ export default function HeaderClient() {
             </div>
 
             {/* RIGHT COLUMN ROW 1: TOP BAR - ALWAYS VISIBLE */}
-            <div className="bg-[#FBF7F1] text-[#3F3A32] text-xs px-4 sm:px-8 py-2 flex justify-between items-center gap-6">
-              {/* Email - LEFT */}
+            <div className="bg-[#FBF7F1] text-[#3F3A32] text-[7px] sm:text-[8px] md:text-xs px-1 sm:px-2 md:px-4 lg:px-8 py-0.5 sm:py-1 md:py-2 flex justify-between items-center gap-0.5 sm:gap-1 md:gap-3 lg:gap-6">
+              
+              {/* Email - LEFT (Show on mobile too) */}
               {settings.contactEmail && (
                 <a
                   href={`mailto:${settings.contactEmail}`}
-                  className="hidden md:flex items-center space-x-2 hover:text-[#B8860B] transition-colors"
+                  className="flex items-center space-x-0.5 sm:space-x-1 md:space-x-2 hover:text-[#B8860B] transition-colors min-w-0 flex-1"
                 >
-                  <span className="w-5 h-5 rounded-full bg-[#B8860B]/10 flex items-center justify-center text-[#B8860B] text-[10px]">
+                  <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-[#B8860B]/10 flex items-center justify-center text-[#B8860B] text-[6px] sm:text-[7px] md:text-[10px] flex-shrink-0">
                     <FaEnvelope />
                   </span>
-                  <span className="font-light tracking-wide">
+                  <span className="font-light tracking-wide text-[6px] sm:text-[7px] md:text-[10px] lg:text-xs truncate">
                     {settings.contactEmail}
                   </span>
                 </a>
               )}
 
               {/* CENTER - "Enjoy Your Shopping" */}
-              <span className="hidden md:block text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B8860B]/80">
+              <span className="hidden sm:block text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] font-semibold text-[#B8860B]/80 whitespace-nowrap lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 ml-20">
                 Enjoy Your Shopping
               </span>
-
+              
               {/* Social Icons - RIGHT */}
-              <div className="flex items-center space-x-2">
-                <span className="text-[11px] uppercase tracking-widest font-semibold text-[#B8860B]">
+              <div className="flex items-center space-x-0.5 sm:space-x-1 md:space-x-2 flex-shrink-0">
+                <span className="hidden xs:inline text-[5px] sm:text-[7px] md:text-[9px] lg:text-[11px] uppercase tracking-widest font-semibold text-[#B8860B]">
                   Connect
                 </span>
-                <div className="flex items-center space-x-1">
+                <div className="flex items-center space-x-0.5 sm:space-x-0.5 md:space-x-1">
                   {settings.facebookUrl && (
                     <a
                       href={settings.facebookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-6 h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
+                      className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
                     >
-                      <FaFacebookF className="text-[10px]" />
+                      <FaFacebookF className="text-[5px] sm:text-[6px] md:text-[8px] lg:text-[10px]" />
                     </a>
                   )}
 
@@ -330,9 +331,9 @@ export default function HeaderClient() {
                       href={settings.twitterUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-6 h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
+                      className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
                     >
-                      <FaTwitter className="text-[10px]" />
+                      <FaTwitter className="text-[5px] sm:text-[6px] md:text-[8px] lg:text-[10px]" />
                     </a>
                   )}
 
@@ -341,9 +342,9 @@ export default function HeaderClient() {
                       href={settings.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-6 h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
+                      className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
                     >
-                      <FaInstagram className="text-[10px]" />
+                      <FaInstagram className="text-[5px] sm:text-[6px] md:text-[8px] lg:text-[10px]" />
                     </a>
                   )}
 
@@ -352,9 +353,9 @@ export default function HeaderClient() {
                       href={settings.youtubeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-6 h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
+                      className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
                     >
-                      <FaYoutube className="text-[10px]" />
+                      <FaYoutube className="text-[5px] sm:text-[6px] md:text-[8px] lg:text-[10px]" />
                     </a>
                   )}
 
@@ -363,9 +364,9 @@ export default function HeaderClient() {
                       href={settings.linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-6 h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
+                      className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full bg-white border border-[#B8860B]/30 text-[#B8860B] flex items-center justify-center hover:bg-[#B8860B] hover:text-white transition-all"
                     >
-                      <FaLinkedinIn className="text-[10px]" />
+                      <FaLinkedinIn className="text-[5px] sm:text-[6px] md:text-[8px] lg:text-[10px]" />
                     </a>
                   )}
                 </div>
@@ -373,9 +374,22 @@ export default function HeaderClient() {
             </div>
 
             {/* RIGHT COLUMN ROW 2: MAIN NAVBAR - ALWAYS VISIBLE */}
-            <div className="px-4 sm:px-8 py-3.5 flex items-center justify-between gap-6 bg-white">
+            <div className="px-1 sm:px-2 md:px-4 lg:px-8 py-0.5 sm:py-1 md:py-2 lg:py-3.5 flex items-center justify-between gap-1 sm:gap-2 md:gap-3 lg:gap-6 bg-white">
               
-              {/* Central Navigation Links */}
+              {/* Mobile Navigation Links - Home, About, Contact */}
+              <div className="flex lg:hidden items-center space-x-1 sm:space-x-2">
+                <Link href="/" className="text-[#D4AF37] font-bold text-[10px] sm:text-xs px-2 py-1 rounded-full bg-[#D4AF37]/10 transition-all">
+                  Home
+                </Link>
+                <Link href="/about" className="text-[#0F172A] font-medium text-[10px] sm:text-xs px-2 py-1 rounded-full hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-all">
+                  About
+                </Link>
+                <Link href="/contact" className="text-[#0F172A] font-medium text-[10px] sm:text-xs px-2 py-1 rounded-full hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-all">
+                  Contact
+                </Link>
+              </div>
+
+              {/* Central Navigation Links - Desktop only */}
               <nav className="hidden lg:flex items-center space-x-1 bg-white/60 border border-[#D4AF37]/20 rounded-full px-6 py-1.5 shadow-inner">
                 <Link href="/" className="text-[#D4AF37] font-bold text-sm tracking-wide px-4 py-1.5 rounded-full bg-[#D4AF37]/10 transition-all">
                   Home
@@ -427,25 +441,30 @@ export default function HeaderClient() {
               </nav>
 
               {/* Expanded Search & Action Cluster */}
-              <div className="flex items-center space-x-4 ml-auto">
+              <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4 ml-auto">
                 
-                {/* Search Bar */}
-                <div ref={searchContainerRef} className="relative hidden md:block w-56 lg:w-72">
-                  <div className="flex items-center border border-[#D4AF37]/30 rounded-full bg-white/90 px-4 py-2 focus-within:border-[#D4AF37] focus-within:ring-2 focus-within:ring-[#D4AF37]/20 transition-all shadow-sm">
+                {/* Search Bar - Hidden on mobile, shown on md+ */}
+                <div ref={searchContainerRef} className="relative hidden md:block w-40 lg:w-56 xl:w-72">
+                  <div className="flex items-center border border-[#D4AF37]/30 rounded-full bg-white/90 px-3 md:px-4 py-1 md:py-2 focus-within:border-[#D4AF37] focus-within:ring-2 focus-within:ring-[#D4AF37]/20 transition-all shadow-sm">
                     <input 
                       type="text" 
                       placeholder="Search products..." 
-                      className="w-full bg-transparent text-xs sm:text-sm focus:outline-none text-[#0F172A] placeholder-[#64748B]"
+                      className="w-full bg-transparent text-xs md:text-sm focus:outline-none text-[#0F172A] placeholder-[#64748B]"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       onFocus={() => setShowSearch(true)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          handleSearchSubmit(e);
+                        }
+                      }}
                       ref={searchInputRef}
                     />
                     <button 
                       onClick={handleSearchSubmit}
                       className="text-[#64748B] hover:text-[#D4AF37] transition-colors ml-2"
                     >
-                      <FaSearch className="text-xs" />
+                      <FaSearch className="text-[10px] md:text-xs" />
                     </button>
                   </div>
 
@@ -511,63 +530,74 @@ export default function HeaderClient() {
                 {/* Mobile Search Icon */}
                 <button 
                   onClick={() => setShowSearch(!showSearch)}
-                  className="md:hidden flex items-center justify-center w-8 h-8 rounded-full bg-white border border-[#D4AF37]/30 text-[#0F172A] hover:text-[#D4AF37] transition-all"
+                  className="md:hidden flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white border border-[#D4AF37]/30 text-[#0F172A] hover:text-[#D4AF37] transition-all"
                 >
-                  <FaSearch className="text-xs" />
+                  <FaSearch className="text-[10px] sm:text-xs" />
                 </button>
 
-                {/* Mobile Search Bar */}
+                {/* Mobile Search Bar - FIXED with onKeyDown */}
                 {showSearch && (
-                  <div className="absolute top-full left-0 right-0 mt-1 px-2 md:hidden">
-                    <div className="flex items-center border border-[#D4AF37]/30 rounded-full bg-white px-4 py-2 shadow-lg">
+                  <div className="absolute top-full left-0 right-0 mt-0.5 px-1 sm:px-2 md:hidden">
+                    <form onSubmit={handleSearchSubmit} className="flex items-center border border-[#D4AF37]/30 rounded-full bg-white px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg">
                       <input 
                         type="text" 
                         placeholder="Search products..." 
-                        className="w-full bg-transparent text-sm focus:outline-none text-[#0F172A] placeholder-[#64748B]"
+                        className="w-full bg-transparent text-xs sm:text-sm focus:outline-none text-[#0F172A] placeholder-[#64748B]"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            if (searchQuery.trim()) {
+                              router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+                              setShowSearch(false);
+                              setSearchQuery('');
+                              setSearchResults([]);
+                            }
+                          }
+                        }}
                         autoFocus
                       />
                       <button 
-                        onClick={handleSearchSubmit}
+                        type="submit"
                         className="text-[#D4AF37] ml-2"
                       >
-                        <FaSearch className="text-sm" />
+                        <FaSearch className="text-xs sm:text-sm" />
                       </button>
-                    </div>
+                    </form>
                   </div>
                 )}
 
-                {/* Authentication Buttons (Desktop) */}
+                {/* Authentication Buttons - Hidden on mobile, shown on md+ */}
                 {!user && (
-                  <div className="hidden md:flex items-center gap-2 text-xs font-semibold">
+                  <div className="hidden md:flex items-center gap-1 lg:gap-2 text-xs font-semibold">
                     <Link
                       href="/login"
-                      className="h-10 flex items-center justify-center px-4 rounded-full border border-[#D4AF37]/30 bg-white/80 text-[#0F172A] hover:text-[#D4AF37] transition-all hover:shadow-sm"
+                      className="h-8 lg:h-10 flex items-center justify-center px-3 lg:px-4 rounded-full border border-[#D4AF37]/30 bg-white/80 text-[#0F172A] hover:text-[#D4AF37] transition-all hover:shadow-sm text-[10px] lg:text-xs"
                     >
                       Login
                     </Link>
                     <Link
                       href="/signup"
-                      className="h-10 w-[84px] flex items-center justify-center whitespace-nowrap gold-gradient gold-gradient-hover text-white px-5 rounded-full shadow-md shadow-[#D4AF37]/20 transition-all hover:-translate-y-0.5"
+                      className="h-8 lg:h-10 flex items-center justify-center whitespace-nowrap gold-gradient gold-gradient-hover text-white px-3 lg:px-5 rounded-full shadow-md shadow-[#D4AF37]/20 transition-all hover:-translate-y-0.5 text-[10px] lg:text-xs"
                     >
                       Sign Up
                     </Link>
                   </div>
                 )}
 
-                {/* User Profile Dropdown Menu (If logged in) */}
+                {/* User Profile Dropdown - Hidden on mobile, shown on sm+ */}
                 {user && (
                   <div className="relative hidden sm:block" ref={dropdownRef}>
                     <button 
                       onClick={toggleDropdown}
-                      className="flex items-center space-x-2.5 p-1.5 pr-3 rounded-full border border-[#D4AF37]/30 bg-white/80 hover:bg-white transition-all shadow-sm"
+                      className="flex items-center space-x-1 sm:space-x-2 p-0.5 sm:p-1 pr-1 sm:pr-2 md:pr-3 rounded-full border border-[#D4AF37]/30 bg-white/80 hover:bg-white transition-all shadow-sm"
                     >
-                      <div className="w-8 h-8 rounded-full gold-gradient text-white flex items-center justify-center font-bold text-xs shadow-inner">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 rounded-full gold-gradient text-white flex items-center justify-center font-bold text-[7px] sm:text-[8px] md:text-[10px] lg:text-xs shadow-inner">
                         {user.email?.charAt(0).toUpperCase()}
                       </div>
-                      <span className="text-xs font-semibold text-[#0F172A] max-w-[100px] truncate">{user.name || user.email}</span>
-                      <FaChevronDown className={`text-[10px] text-[#64748B] transition-transform duration-300 ${showDropdown ? 'rotate-180' : ''}`} />
+                      <span className="hidden md:inline text-[10px] lg:text-xs font-semibold text-[#0F172A] max-w-[100px] truncate">{user.name || user.email}</span>
+                      <FaChevronDown className={`text-[6px] sm:text-[7px] md:text-[8px] lg:text-[10px] text-[#64748B] transition-transform duration-300 ${showDropdown ? 'rotate-180' : ''}`} />
                     </button>
 
                     {showDropdown && (
@@ -594,12 +624,12 @@ export default function HeaderClient() {
                 {/* Cart Button */}
                 <button 
                   onClick={handleOpenCart} 
-                  className="relative w-11 h-11 rounded-full bg-white border border-[#D4AF37]/30 flex items-center justify-center text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37] transition-all shadow-sm group cursor-pointer"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11 rounded-full bg-white border border-[#D4AF37]/30 flex items-center justify-center text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37] transition-all shadow-sm group cursor-pointer"
                   aria-label="Shopping Cart"
                 >
-                  <FaShoppingCart className="text-base transition-transform group-hover:scale-110" />
+                  <FaShoppingCart className="text-xs sm:text-sm md:text-base transition-transform group-hover:scale-110" />
                   {cartItemsCount > 0 && (
-                    <span className="absolute -top-1 -right-1 gold-gradient text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                    <span className="absolute -top-1 -right-1 gold-gradient text-white text-[6px] sm:text-[7px] md:text-[8px] lg:text-[10px] font-bold w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5 lg:w-5 lg:h-5 rounded-full flex items-center justify-center shadow-lg animate-pulse">
                       {cartItemsCount > 9 ? '9+' : cartItemsCount}
                     </span>
                   )}
@@ -608,10 +638,10 @@ export default function HeaderClient() {
                 {/* Hamburger Menu */}
                 <button 
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className="lg:hidden flex items-center justify-center w-11 h-11 rounded-full bg-white border border-[#D4AF37]/30 text-[#0F172A] hover:text-[#D4AF37] transition-all shadow-sm"
+                  className="lg:hidden flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full bg-white border border-[#D4AF37]/30 text-[#0F172A] hover:text-[#D4AF37] transition-all shadow-sm"
                   aria-label="Open Menu"
                 >
-                  <FaBars className="w-4 h-4" />
+                  <FaBars className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
                 </button>
 
               </div>
@@ -622,110 +652,85 @@ export default function HeaderClient() {
 
       </div>
 
-      {/* Mobile Menu Drawer */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-[#FFFCF7] shadow-2xl flex flex-col border-l border-[#D4AF37]/30">
-            
-            <div className="flex items-center justify-between p-5 border-b border-[#D4AF37]/20 bg-gradient-to-r from-[#0F172A] to-[#1E293B]">
-              <div className="relative w-32 h-10">
-                <Image 
-                  src={`${STATIC_URL}/logo.webp`} 
-                  alt={siteName} 
-                  fill 
-                  className="object-contain object-left brightness-0 invert"
-                />
-              </div>
-              <button 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="w-9 h-9 rounded-full bg-white/10 border border-[#D4AF37]/30 flex items-center justify-center text-white hover:bg-[#D4AF37] hover:text-[#0F172A] transition-all"
-              >
-                <FaTimes />
-              </button>
+      {/* Mobile Menu Drawer - ONLY CATEGORIES, LOGIN & SIGNUP */}
+      <div className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} onClick={() => setIsMobileMenuOpen(false)} />
+        <div className={`absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl flex flex-col border-l border-[#D4AF37]/30 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          
+          <div className="flex items-center justify-between p-5 border-b border-[#D4AF37]/20 bg-white">
+            <div className="relative w-32 h-10">
+              <Image 
+                src={`${STATIC_URL}/logo.webp`} 
+                alt={siteName} 
+                fill 
+                className="object-contain object-left"
+              />
             </div>
-
-            <nav className="flex-1 p-6 overflow-y-auto space-y-4">
-              <Link 
-                href="/" 
-                className="flex items-center px-4 py-3 rounded-xl text-[#0F172A] bg-[#D4AF37]/10 font-bold text-sm tracking-wide transition-all" 
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-
-              {categories.length > 0 && (
-                <div>
-                  <p className="px-4 pb-2 text-[11px] font-bold text-[#64748B] uppercase tracking-widest">Collections</p>
-                  <div className="space-y-1 mt-1">
-                    {categories.map((category) => (
-                      <Link 
-                        key={category._id} 
-                        href={`/products?category=${category.slug}`} 
-                        className="flex items-center px-4 py-2.5 rounded-xl text-[#334155] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] font-medium text-sm transition-all" 
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mr-2.5"></span>
-                        <span className="truncate">{category.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="border-t border-gray-200 pt-3 space-y-1">
-                <Link 
-                  href="/about" 
-                  className="flex items-center px-4 py-2.5 rounded-xl text-[#0F172A] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] font-semibold text-sm transition-all" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About Us
-                </Link>
-                <Link 
-                  href="/contact" 
-                  className="flex items-center px-4 py-2.5 rounded-xl text-[#0F172A] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] font-semibold text-sm transition-all" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Contact Us
-                </Link>
-              </div>
-            </nav>
-
-            <div className="p-5 border-t border-[#D4AF37]/20 bg-[#FAF6ED]">
-              {user ? (
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3 min-w-0">
-                    <div className="w-10 h-10 rounded-full gold-gradient text-white flex items-center justify-center font-bold text-sm shadow-md flex-shrink-0">
-                      {user.email?.charAt(0).toUpperCase()}
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-bold text-[#0F172A] truncate">{user.name || user.email}</p>
-                      <Link href="/profile" className="text-[11px] text-[#D4AF37] font-semibold hover:underline" onClick={() => setIsMobileMenuOpen(false)}>Manage Account</Link>
-                    </div>
-                  </div>
-                  <button 
-                    onClick={handleLogout}
-                    className="text-red-500 hover:bg-red-50 p-2 rounded-xl border border-red-200 transition-colors"
-                    title="Logout"
-                  >
-                    <FaSignOutAlt className="text-sm" />
-                  </button>
-                </div>
-              ) : (
-                <div className="flex space-x-3">
-                  <Link href="/login" className="flex-1 text-center py-3 rounded-xl bg-white border border-[#D4AF37]/30 text-[#0F172A] font-semibold text-xs shadow-sm hover:bg-[#FAF6ED]" onClick={() => setIsMobileMenuOpen(false)}>
-                    Login
-                  </Link>
-                  <Link href="/signup" className="flex-1 text-center py-3 rounded-xl gold-gradient text-white font-semibold text-xs shadow-md" onClick={() => setIsMobileMenuOpen(false)}>
-                    Sign Up
-                  </Link>
-                </div>
-              )}
-            </div>
-
+            <button 
+              onClick={() => setIsMobileMenuOpen(false)} 
+              className="w-9 h-9 rounded-full bg-gray-100 border border-[#D4AF37]/30 flex items-center justify-center text-[#0F172A] hover:bg-[#D4AF37] hover:text-white transition-all"
+            >
+              <FaTimes />
+            </button>
           </div>
+
+          <nav className="flex-1 p-6 overflow-y-auto bg-white">
+            {/* ONLY CATEGORIES */}
+            {categories.length > 0 && (
+              <div>
+                <p className="px-4 pb-2 text-[11px] font-bold text-[#64748B] uppercase tracking-widest">Collections</p>
+                <div className="space-y-1 mt-1">
+                  {categories.map((category) => (
+                    <Link 
+                      key={category._id} 
+                      href={`/products?category=${category.slug}`} 
+                      className="flex items-center px-4 py-2.5 rounded-xl text-[#334155] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] font-medium text-sm transition-all" 
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mr-2.5"></span>
+                      <span className="truncate">{category.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </nav>
+
+          {/* ONLY LOGIN & SIGNUP */}
+          <div className="p-5 border-t border-[#D4AF37]/20 bg-white">
+            {user ? (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3 min-w-0">
+                  <div className="w-10 h-10 rounded-full gold-gradient text-white flex items-center justify-center font-bold text-sm shadow-md flex-shrink-0">
+                    {user.email?.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-[#0F172A] truncate">{user.name || user.email}</p>
+                    <Link href="/profile" className="text-[11px] text-[#D4AF37] font-semibold hover:underline" onClick={() => setIsMobileMenuOpen(false)}>Manage Account</Link>
+                  </div>
+                </div>
+                <button 
+                  onClick={handleLogout}
+                  className="text-red-500 hover:bg-red-50 p-2 rounded-xl border border-red-200 transition-colors"
+                  title="Logout"
+                >
+                  <FaSignOutAlt className="text-sm" />
+                </button>
+              </div>
+            ) : (
+              <div className="flex space-x-3">
+                <Link href="/login" className="flex-1 text-center py-3 rounded-xl bg-white border border-[#D4AF37]/30 text-[#0F172A] font-semibold text-xs shadow-sm hover:bg-[#FAF6ED]" onClick={() => setIsMobileMenuOpen(false)}>
+                  Login
+                </Link>
+                <Link href="/signup" className="flex-1 text-center py-3 rounded-xl gold-gradient text-white font-semibold text-xs shadow-md" onClick={() => setIsMobileMenuOpen(false)}>
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </div>
+
         </div>
-      )}
+      </div>
 
       <CartDrawer isOpen={isCartOpen} onClose={handleCloseCart} />
     </>
