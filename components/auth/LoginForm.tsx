@@ -33,21 +33,21 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 flex items-center justify-center py-12">
+    <div className="min-h-screen bg-white flex items-center justify-center py-12">
       <div className="container mx-auto px-4">
-        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-sm border border-stone-200 p-8 hover:shadow-md transition-shadow duration-200">
+        <div className="max-w-md mx-auto bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-8 hover:shadow-md transition-shadow duration-200">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-white font-bold text-xl">ebazz</span>
+            <div className="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <span className="text-white font-bold text-xl">AA</span>
             </div>
-            <h1 className="text-3xl font-bold text-stone-900 mb-2">Welcome Back</h1>
-            <p className="text-stone-500">Sign in to your account</p>
+            <h1 className="text-3xl font-bold text-[#0F172A] mb-2">Welcome Back</h1>
+            <p className="text-[#64748B]">Sign in to your account</p>
           </div>
           
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-[#0F172A] mb-2">
                 Email Address
               </label>
               <input
@@ -55,7 +55,7 @@ export default function LoginPage() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 bg-stone-50 hover:bg-white text-stone-900 placeholder-stone-400"
+                className="w-full px-4 py-3 border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 bg-white hover:bg-white text-[#0F172A] placeholder-[#64748B]"
                 placeholder="Enter your email"
                 required
                 suppressHydrationWarning
@@ -63,7 +63,7 @@ export default function LoginPage() {
             </div>
             
             <div className="mb-6">
-              <label htmlFor="password" className="block text-sm font-medium text-stone-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-[#0F172A] mb-2">
                 Password
               </label>
               <input
@@ -71,7 +71,7 @@ export default function LoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 bg-stone-50 hover:bg-white text-stone-900 placeholder-stone-400"
+                className="w-full px-4 py-3 border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 bg-white hover:bg-white text-[#0F172A] placeholder-[#64748B]"
                 placeholder="Enter your password"
                 required
                 suppressHydrationWarning
@@ -90,7 +90,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-orange-500 text-white py-3 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full gold-gradient gold-gradient-hover text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg shadow-[#D4AF37]/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:-translate-y-0.5"
               suppressHydrationWarning
             >
               {loading ? (
@@ -105,20 +105,20 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-stone-600">
+            <p className="text-[#64748B]">
               Don't have an account?{' '}
-              <Link href="/signup" className="text-orange-500 hover:text-orange-600 font-semibold transition-colors duration-200">
+              <Link href="/signup" className="text-[#B8860B] hover:text-[#0F172A] font-semibold transition-colors duration-200">
                 Create an account
               </Link>
             </p>
           </div>
 
           {/* Additional Links */}
-          <div className="mt-6 pt-6 border-t border-stone-200">
+          <div className="mt-6 pt-6 border-t border-[#D4AF37]/20">
             <div className="text-center">
               <Link 
                 href="/forgot-password" 
-                className="text-sm text-stone-500 hover:text-orange-600 transition-colors duration-200"
+                className="text-sm text-[#64748B] hover:text-[#B8860B] transition-colors duration-200"
               >
                 Forgot your password?
               </Link>

@@ -1,4 +1,4 @@
-// app/profile/page.tsx - COMPLETE CORRECTED VERSION WITH ORANGE THEME
+// app/profile/page.tsx - COMPLETE CORRECTED VERSION WITH THEME COLORS
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -330,17 +330,17 @@ export default function UserProfile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-stone-50 py-12">
+      <div className="min-h-screen bg-white py-12">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center py-12">
             <div className="text-center">
               <div className="relative">
-                <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-500 border-t-transparent mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#D4AF37] border-t-transparent mx-auto"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-6 w-6 rounded-full bg-orange-500/20 animate-pulse"></div>
+                  <div className="h-6 w-6 rounded-full bg-[#D4AF37]/20 animate-pulse"></div>
                 </div>
               </div>
-              <p className="mt-4 text-stone-600 font-medium">Loading your orders...</p>
+              <p className="mt-4 text-[#64748B] font-medium">Loading your orders...</p>
             </div>
           </div>
         </div>
@@ -350,13 +350,13 @@ export default function UserProfile() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-stone-50 py-12">
+      <div className="min-h-screen bg-white py-12">
         <div className="container mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8 text-center">
+          <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-8 text-center">
             <div className="text-red-600 mb-4 font-medium">{error}</div>
             <button 
               onClick={() => window.location.reload()}
-              className="bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 font-medium shadow-lg"
+              className="gold-gradient gold-gradient-hover text-white px-6 py-3 rounded-xl transition-all duration-200 font-medium shadow-lg shadow-[#D4AF37]/20 hover:-translate-y-0.5"
             >
               Try Again
             </button>
@@ -367,27 +367,27 @@ export default function UserProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 py-12">
+    <div className="min-h-screen bg-white py-12">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-stone-900">My Profile</h1>
-          <p className="text-stone-500 mt-1">Manage your account and orders</p>
+          <h1 className="text-3xl font-bold text-[#0F172A]">My Profile</h1>
+          <p className="text-[#64748B] mt-1">Manage your account and orders</p>
         </div>
 
         {activeOrders.length === 0 && cancelledOrders.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8 text-center">
+          <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-8 text-center">
             <div className="max-w-md mx-auto">
-              <div className="w-20 h-20 bg-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 gold-gradient/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-stone-900 mb-2">No orders yet</h3>
-              <p className="text-stone-500 mb-6">Start shopping to see your orders here</p>
+              <h3 className="text-2xl font-bold text-[#0F172A] mb-2">No orders yet</h3>
+              <p className="text-[#64748B] mb-6">Start shopping to see your orders here</p>
               <button
                 onClick={() => router.push('/products')}
-                className="bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 font-medium shadow-lg"
+                className="gold-gradient gold-gradient-hover text-white px-6 py-3 rounded-xl transition-all duration-200 font-medium shadow-lg shadow-[#D4AF37]/20 hover:-translate-y-0.5"
               >
                 Start Shopping
               </button>
@@ -399,24 +399,24 @@ export default function UserProfile() {
             <div className="lg:col-span-1 space-y-6">
               <div className="sticky top-6 space-y-6">
                 {/* Profile Summary Card */}
-                <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
-                  <h3 className="text-lg font-semibold text-stone-900 mb-4">Profile Summary</h3>
+                <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-6">
+                  <h3 className="text-lg font-semibold text-[#0F172A] mb-4">Profile Summary</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-stone-600">Active Orders</span>
-                      <span className="font-semibold text-stone-900">{activeOrders.length}</span>
+                      <span className="text-[#64748B]">Active Orders</span>
+                      <span className="font-semibold text-[#0F172A]">{activeOrders.length}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-stone-600">Cancelled Orders</span>
-                      <span className="font-semibold text-stone-900">{cancelledOrders.length}</span>
+                      <span className="text-[#64748B]">Cancelled Orders</span>
+                      <span className="font-semibold text-[#0F172A]">{cancelledOrders.length}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-stone-600">Total Orders</span>
-                      <span className="font-semibold text-stone-900">{orders.length}</span>
+                      <span className="text-[#64748B]">Total Orders</span>
+                      <span className="font-semibold text-[#0F172A]">{orders.length}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-stone-600">Total Spent</span>
-                      <span className="font-semibold text-orange-600">
+                      <span className="text-[#64748B]">Total Spent</span>
+                      <span className="font-semibold text-[#B8860B]">
                         ₹{orders.reduce((total, order) => total + calculateOrderTotal(order), 0).toFixed(2)}
                       </span>
                     </div>
@@ -424,13 +424,13 @@ export default function UserProfile() {
                 </div>
 
                 {/* Quick Actions */}
-                <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
-                  <h3 className="text-lg font-semibold text-stone-900 mb-4">Quick Actions</h3>
+                <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-6">
+                  <h3 className="text-lg font-semibold text-[#0F172A] mb-4">Quick Actions</h3>
                   <div className="space-y-3">
                     {cancelledOrders.length > 0 && (
                       <button
                         onClick={() => setShowCancelledOrdersModal(true)}
-                        className="w-full px-4 py-3 bg-orange-500 text-white rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 font-medium transition-colors text-left flex items-center gap-3 shadow-lg"
+                        className="w-full px-4 py-3 gold-gradient text-white rounded-xl font-medium transition-colors text-left flex items-center gap-3 shadow-lg shadow-[#D4AF37]/20"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -440,7 +440,7 @@ export default function UserProfile() {
                     )}
                     <button
                       onClick={() => router.push('/products')}
-                      className="w-full px-4 py-3 bg-white text-stone-700 rounded-xl hover:bg-orange-50 hover:text-orange-600 font-medium transition-colors text-left flex items-center gap-3 border border-stone-200"
+                      className="w-full px-4 py-3 bg-white text-[#0F172A] rounded-xl hover:bg-[#FBF7F1] hover:text-[#B8860B] font-medium transition-colors text-left flex items-center gap-3 border border-[#D4AF37]/30"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -454,19 +454,19 @@ export default function UserProfile() {
 
             {/* Main Content - Active Orders */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden">
-                <div className="px-6 py-4 border-b border-stone-200 bg-stone-50/30">
+              <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 overflow-hidden">
+                <div className="px-6 py-4 border-b border-[#D4AF37]/20 bg-white/30">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h2 className="text-xl font-semibold text-stone-900">Active Orders</h2>
-                      <p className="text-stone-500 mt-1 text-sm">
+                      <h2 className="text-xl font-semibold text-[#0F172A]">Active Orders</h2>
+                      <p className="text-[#64748B] mt-1 text-sm">
                         {activeOrders.length} {activeOrders.length === 1 ? 'active order' : 'active orders'}
                       </p>
                     </div>
                     {cancelledOrders.length > 0 && (
                       <button
                         onClick={() => setShowCancelledOrdersModal(true)}
-                        className="text-orange-500 hover:text-orange-600 font-medium text-sm flex items-center gap-2"
+                        className="text-[#B8860B] hover:text-[#0F172A] font-medium text-sm flex items-center gap-2"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -479,22 +479,22 @@ export default function UserProfile() {
                 
                 {activeOrders.length === 0 ? (
                   <div className="p-8 text-center">
-                    <div className="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-8 h-8 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D4AF37]/20">
+                      <svg className="w-8 h-8 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold text-stone-900 mb-2">No active orders</h3>
-                    <p className="text-stone-500 mb-4">All your current orders are completed or cancelled</p>
+                    <h3 className="text-lg font-semibold text-[#0F172A] mb-2">No active orders</h3>
+                    <p className="text-[#64748B] mb-4">All your current orders are completed or cancelled</p>
                     <button
                       onClick={() => router.push('/products')}
-                      className="bg-orange-500 text-white px-6 py-2 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 font-medium shadow-lg"
+                      className="gold-gradient gold-gradient-hover text-white px-6 py-2 rounded-xl transition-all duration-200 font-medium shadow-lg shadow-[#D4AF37]/20 hover:-translate-y-0.5"
                     >
                       Start Shopping
                     </button>
                   </div>
                 ) : (
-                  <div className="divide-y divide-stone-200">
+                  <div className="divide-y divide-[#D4AF37]/20">
                     {activeOrders.map((order) => {
                       const orderTotal = calculateOrderTotal(order);
                       const subtotal = calculateSubtotal(order.products || []);
@@ -502,16 +502,16 @@ export default function UserProfile() {
                       return (
                         <div
                           key={order._id}
-                          className={`p-6 hover:bg-stone-50 cursor-pointer transition-all duration-200 group ${
-                            selectedOrder?._id === order._id ? 'bg-orange-50 border-l-4 border-l-orange-500' : ''
+                          className={`p-6 hover:bg-white cursor-pointer transition-all duration-200 group ${
+                            selectedOrder?._id === order._id ? 'bg-white border-l-4 border-l-[#D4AF37]' : ''
                           }`}
                           onClick={() => fetchOrderDetails(order._id)}
                         >
                           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
                             <div className="flex-1">
                               <div className="flex flex-col lg:flex-row lg:items-center gap-3 mb-3">
-                                <h3 className={`text-lg font-semibold group-hover:text-stone-900 transition-colors ${
-                                  selectedOrder?._id === order._id ? 'text-stone-900' : 'text-stone-900'
+                                <h3 className={`text-lg font-semibold group-hover:text-[#0F172A] transition-colors ${
+                                  selectedOrder?._id === order._id ? 'text-[#0F172A]' : 'text-[#0F172A]'
                                 }`}>
                                   Order #{order.orderId || order._id?.slice(-8)}
                                 </h3>
@@ -521,26 +521,26 @@ export default function UserProfile() {
                                 </div>
                               </div>
                               
-                              <p className="text-stone-500 mb-3 text-sm">
+                              <p className="text-[#64748B] mb-3 text-sm">
                                 Placed on {formatDate(order.createdAt)}
                               </p>
                               
                               <div className="flex flex-wrap items-center gap-3 text-sm">
-                                <span className="text-stone-600">{order.products?.length || 0} items</span>
-                                <span className="text-stone-300">•</span>
-                                <span className="font-semibold text-stone-900">
+                                <span className="text-[#64748B]">{order.products?.length || 0} items</span>
+                                <span className="text-[#D4AF37]/30">•</span>
+                                <span className="font-semibold text-[#0F172A]">
                                   ₹{orderTotal.toFixed(2)}
                                 </span>
                                 {orderTotal > 0 && subtotal > 0 && orderTotal !== subtotal && (
                                   <>
-                                    <span className="text-stone-300">•</span>
-                                    <span className="text-stone-400 line-through text-xs">
+                                    <span className="text-[#D4AF37]/30">•</span>
+                                    <span className="text-[#64748B] line-through text-xs">
                                       ₹{subtotal.toFixed(2)}
                                     </span>
                                   </>
                                 )}
-                                <span className="text-stone-300">•</span>
-                                <span className="text-stone-600 capitalize">{order.paymentMethod}</span>
+                                <span className="text-[#D4AF37]/30">•</span>
+                                <span className="text-[#64748B] capitalize">{order.paymentMethod}</span>
                               </div>
 
                               {/* Order Items Preview */}
@@ -549,30 +549,30 @@ export default function UserProfile() {
                                   const itemTotal = getItemTotal(item);
                                   
                                   return (
-                                    <div key={index} className="flex items-center gap-2 bg-stone-50 rounded-xl px-3 py-2 border border-stone-200">
-                                      <span className="text-sm text-stone-700">
+                                    <div key={index} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 border border-[#D4AF37]/20">
+                                      <span className="text-sm text-[#0F172A]">
                                         {getProductDisplayName(item).length > 40 
                                           ? getProductDisplayName(item).substring(0, 40) + '...' 
                                           : getProductDisplayName(item)}
                                       </span>
                                       
                                       {item.selectedSize && (
-                                        <span className="text-xs bg-orange-500 text-white px-2 py-1 rounded-full font-medium">
+                                        <span className="text-xs gold-gradient text-white px-2 py-1 rounded-full font-medium">
                                           Size: {item.selectedSize}
                                         </span>
                                       )}
-                                      <span className="text-xs text-stone-600 bg-white px-1 rounded border border-stone-200">
+                                      <span className="text-xs text-[#64748B] bg-[#FBF7F1] px-1 rounded border border-[#D4AF37]/20">
                                         x{item.quantity}
                                       </span>
-                                      <span className="text-xs font-semibold text-stone-900">
+                                      <span className="text-xs font-semibold text-[#0F172A]">
                                         ₹{itemTotal.toFixed(2)}
                                       </span>
                                     </div>
                                   );
                                 })}
                                 {order.products && order.products.length > 3 && (
-                                  <div className="flex items-center gap-2 bg-stone-50 rounded-xl px-3 py-2 border border-stone-200">
-                                    <span className="text-sm text-stone-700">
+                                  <div className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 border border-[#D4AF37]/20">
+                                    <span className="text-sm text-[#0F172A]">
                                       +{order.products.length - 3} more
                                     </span>
                                   </div>
@@ -613,7 +613,7 @@ export default function UserProfile() {
                                   handleViewPDF(order._id);
                                 }}
                                 disabled={pdfLoading}
-                                className="bg-orange-500 text-white px-4 py-2 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-colors font-medium text-sm flex items-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                                className="gold-gradient gold-gradient-hover text-white px-4 py-2 rounded-xl transition-colors font-medium text-sm flex items-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#D4AF37]/20"
                               >
                                 {pdfLoading ? (
                                   <>
@@ -644,17 +644,17 @@ export default function UserProfile() {
         {/* Cancel Order Confirmation Modal */}
         {showCancelModal && selectedOrder && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-stone-200">
-              <h3 className="text-lg font-semibold text-stone-900 mb-4">
+            <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-[#D4AF37]/20">
+              <h3 className="text-lg font-semibold text-[#0F172A] mb-4">
                 Cancel Order #{selectedOrder.orderId || selectedOrder._id?.slice(-8)}
               </h3>
               
-              <p className="text-stone-600 mb-4">
+              <p className="text-[#64748B] mb-4">
                 Are you sure you want to cancel this order? This action cannot be undone.
               </p>
 
               <div className="mb-4">
-                <label htmlFor="cancellationReason" className="block text-sm font-medium text-stone-700 mb-2">
+                <label htmlFor="cancellationReason" className="block text-sm font-medium text-[#0F172A] mb-2">
                   Reason for cancellation (optional)
                 </label>
                 <textarea
@@ -662,7 +662,7 @@ export default function UserProfile() {
                   value={cancellationReason}
                   onChange={(e) => setCancellationReason(e.target.value)}
                   placeholder="Please provide a reason for cancellation..."
-                  className="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 text-stone-900 bg-stone-50"
+                  className="w-full px-3 py-2 border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 text-[#0F172A] bg-[#FBF7F1]"
                   rows={3}
                 />
               </div>
@@ -674,7 +674,7 @@ export default function UserProfile() {
                     setSelectedOrder(null);
                     setCancellationReason('');
                   }}
-                  className="px-4 py-2 text-stone-600 border border-stone-200 rounded-xl hover:bg-stone-50 transition-colors"
+                  className="px-4 py-2 text-[#0F172A] border border-[#D4AF37]/30 rounded-xl hover:bg-[#FBF7F1] transition-colors"
                   disabled={cancellingOrderId !== null}
                 >
                   Keep Order
@@ -701,14 +701,14 @@ export default function UserProfile() {
         {/* PDF Modal */}
         {showPDFModal && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col border border-stone-200">
-              <div className="px-6 py-4 border-b border-stone-200 bg-stone-50/30 flex justify-between items-center">
-                <h3 className="text-xl font-semibold text-stone-900">Order Receipt</h3>
+            <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col border border-[#D4AF37]/20">
+              <div className="px-6 py-4 border-b border-[#D4AF37]/20 bg-[#FBF7F1]/30 flex justify-between items-center">
+                <h3 className="text-xl font-semibold text-[#0F172A]">Order Receipt</h3>
                 <div className="flex items-center gap-3">
                   <a
                     href={pdfUrl}
                     download={`receipt-${selectedOrder?.orderId || selectedOrder?._id?.slice(-8)}.pdf`}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-colors font-medium text-sm shadow-lg"
+                    className="inline-flex items-center gap-2 px-4 py-2 gold-gradient gold-gradient-hover text-white rounded-xl transition-colors font-medium text-sm shadow-lg shadow-[#D4AF37]/20"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -717,7 +717,7 @@ export default function UserProfile() {
                   </a>
                   <button
                     onClick={closePDFModal}
-                    className="text-stone-500 hover:text-stone-700 transition-colors p-2 hover:bg-stone-100 rounded-xl"
+                    className="text-[#64748B] hover:text-[#0F172A] transition-colors p-2 hover:bg-[#FBF7F1] rounded-xl"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -731,12 +731,12 @@ export default function UserProfile() {
                   <div className="flex items-center justify-center h-96">
                     <div className="text-center">
                       <div className="relative">
-                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-500 border-t-transparent mx-auto"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#D4AF37] border-t-transparent mx-auto"></div>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="h-6 w-6 rounded-full bg-orange-500/20 animate-pulse"></div>
+                          <div className="h-6 w-6 rounded-full bg-[#D4AF37]/20 animate-pulse"></div>
                         </div>
                       </div>
-                      <p className="mt-4 text-stone-600 font-medium">Loading PDF...</p>
+                      <p className="mt-4 text-[#64748B] font-medium">Loading PDF...</p>
                     </div>
                   </div>
                 ) : pdfUrl ? (
@@ -753,8 +753,8 @@ export default function UserProfile() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
-                      <h3 className="text-lg font-semibold text-stone-900 mb-2">Failed to load PDF</h3>
-                      <p className="text-stone-500">The receipt could not be loaded. Please try again.</p>
+                      <h3 className="text-lg font-semibold text-[#0F172A] mb-2">Failed to load PDF</h3>
+                      <p className="text-[#64748B]">The receipt could not be loaded. Please try again.</p>
                     </div>
                   </div>
                 )}
@@ -766,14 +766,14 @@ export default function UserProfile() {
         {/* Cancelled Orders Modal */}
         {showCancelledOrdersModal && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-stone-200">
-              <div className="px-6 py-4 border-b border-stone-200 bg-stone-50/30 flex justify-between items-center">
-                <h3 className="text-xl font-semibold text-stone-900">
+            <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-[#D4AF37]/20">
+              <div className="px-6 py-4 border-b border-[#D4AF37]/20 bg-[#FBF7F1]/30 flex justify-between items-center">
+                <h3 className="text-xl font-semibold text-[#0F172A]">
                   Cancelled Orders ({cancelledOrders.length})
                 </h3>
                 <button
                   onClick={() => setShowCancelledOrdersModal(false)}
-                  className="text-stone-500 hover:text-stone-700 transition-colors p-2 hover:bg-stone-100 rounded-xl"
+                  className="text-[#64748B] hover:text-[#0F172A] transition-colors p-2 hover:bg-[#FBF7F1] rounded-xl"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -784,23 +784,23 @@ export default function UserProfile() {
               <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
                 {cancelledOrders.length === 0 ? (
                   <div className="p-8 text-center">
-                    <div className="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-8 h-8 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 bg-[#FBF7F1] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D4AF37]/20">
+                      <svg className="w-8 h-8 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold text-stone-900 mb-2">No cancelled orders</h3>
-                    <p className="text-stone-500">You haven&apos;t cancelled any orders yet</p>
+                    <h3 className="text-lg font-semibold text-[#0F172A] mb-2">No cancelled orders</h3>
+                    <p className="text-[#64748B]">You haven&apos;t cancelled any orders yet</p>
                   </div>
                 ) : (
-                  <div className="divide-y divide-stone-200">
+                  <div className="divide-y divide-[#D4AF37]/20">
                     {cancelledOrders.map((order) => {
                       const orderTotal = calculateOrderTotal(order);
                       
                       return (
                         <div
                           key={order._id}
-                          className="p-6 hover:bg-stone-50 cursor-pointer transition-all duration-200"
+                          className="p-6 hover:bg-[#FBF7F1] cursor-pointer transition-all duration-200"
                           onClick={() => {
                             setSelectedOrder(order);
                             setShowCancelledOrdersModal(false);
@@ -809,7 +809,7 @@ export default function UserProfile() {
                           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
                             <div className="flex-1">
                               <div className="flex flex-col lg:flex-row lg:items-center gap-3 mb-3">
-                                <h3 className="text-lg font-semibold text-stone-900">
+                                <h3 className="text-lg font-semibold text-[#0F172A]">
                                   Order #{order.orderId || order._id?.slice(-8)}
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
@@ -818,25 +818,25 @@ export default function UserProfile() {
                                 </div>
                               </div>
                               
-                              <p className="text-stone-500 mb-3 text-sm">
+                              <p className="text-[#64748B] mb-3 text-sm">
                                 Cancelled on {formatDate(order.updatedAt || order.createdAt)}
                               </p>
                               
                               <div className="flex flex-wrap items-center gap-3 text-sm">
-                                <span className="text-stone-600">{order.products?.length || 0} items</span>
-                                <span className="text-stone-300">•</span>
-                                <span className="font-semibold text-stone-900">
+                                <span className="text-[#64748B]">{order.products?.length || 0} items</span>
+                                <span className="text-[#D4AF37]/30">•</span>
+                                <span className="font-semibold text-[#0F172A]">
                                   ₹{orderTotal.toFixed(2)}
                                 </span>
-                                <span className="text-stone-300">•</span>
-                                <span className="text-stone-600 capitalize">{order.paymentMethod}</span>
-                                <span className="text-stone-300">•</span>
+                                <span className="text-[#D4AF37]/30">•</span>
+                                <span className="text-[#64748B] capitalize">{order.paymentMethod}</span>
+                                <span className="text-[#D4AF37]/30">•</span>
                                 <button 
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     handleViewPDF(order._id);
                                   }}
-                                  className="inline-flex items-center gap-1 text-orange-500 hover:text-orange-600 font-medium text-sm"
+                                  className="inline-flex items-center gap-1 text-[#B8860B] hover:text-[#0F172A] font-medium text-sm"
                                 >
                                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
@@ -851,27 +851,27 @@ export default function UserProfile() {
                                   const itemTotal = getItemTotal(item);
                                   
                                   return (
-                                    <div key={index} className="flex items-center gap-2 bg-stone-50 rounded-xl px-3 py-2 border border-stone-200">
-                                      <span className="text-sm text-stone-700">
+                                    <div key={index} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 border border-[#D4AF37]/20">
+                                      <span className="text-sm text-[#0F172A]">
                                         {getProductDisplayName(item)}
                                       </span>
                                       {item.selectedSize && (
-                                        <span className="text-xs bg-orange-500 text-white px-2 py-1 rounded-full font-medium">
+                                        <span className="text-xs gold-gradient text-white px-2 py-1 rounded-full font-medium">
                                           Size: {item.selectedSize}
                                         </span>
                                       )}
-                                      <span className="text-xs text-stone-600 bg-white px-1 rounded border border-stone-200">
+                                      <span className="text-xs text-[#64748B] bg-[#FBF7F1] px-1 rounded border border-[#D4AF37]/20">
                                         x{item.quantity}
                                       </span>
-                                      <span className="text-xs font-semibold text-stone-900">
+                                      <span className="text-xs font-semibold text-[#0F172A]">
                                         ₹{itemTotal.toFixed(2)}
                                       </span>
                                     </div>
                                   );
                                 })}
                                 {order.products && order.products.length > 3 && (
-                                  <div className="flex items-center gap-2 bg-stone-50 rounded-xl px-3 py-2 border border-stone-200">
-                                    <span className="text-sm text-stone-700">
+                                  <div className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 border border-[#D4AF37]/20">
+                                    <span className="text-sm text-[#0F172A]">
                                       +{order.products.length - 3} more
                                     </span>
                                   </div>

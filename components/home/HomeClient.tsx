@@ -204,65 +204,65 @@ export default function HomeClient({ categories }: HomeClientProps) {
         <section className="py-6 xs:py-8 sm:py-12 bg-white" aria-label="Explore Our Ethnic Collections">
           <div className="container mx-auto px-1">
             <div className="text-center mb-4 xs:mb-6 sm:mb-8">
-              <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-[0.18em] text-orange-500 uppercase">
+              <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-[0.18em] text-[#B8860B] uppercase">
                 Featured Products
               </span>
 
               <h2 className="mt-1 text-xl xs:text-2xl sm:text-3xl font-extrabold tracking-tight uppercase">
-                <span className="text-stone-900">Explore Top </span>
-                <span className="text-orange-500">Products</span>
+                <span className="text-[#0F172A]">Explore Top </span>
+                <span className="text-[#D4AF37]">Products</span>
               </h2>
 
-              <p className="text-[9px] xs:text-[10px] sm:text-xs text-stone-500 max-w-2xl mx-auto px-2 mt-1.5">
+              <p className="text-[9px] xs:text-[10px] sm:text-xs text-[#64748B] max-w-2xl mx-auto px-2 mt-1.5">
                 Quality, unmatched performance. This is for your needs.
               </p>
             </div>
 
             <div className="space-y-8 xs:space-y-10 sm:space-y-12">
-       {visibleCategories.map((category, index) => {
-  const productCount = categoryProductCounts[category._id] || 0;
-  
-  return (
-    <div 
-      key={category._id} 
-      className="animate-fade-in-up" 
-      style={{ 
-        animationDelay: `${index * 300}ms`,
-        animationFillMode: 'both'
-      }}
-    >
-      <div className="mb-4 xs:mb-5 sm:mb-6 px-2 xs:px-3 sm:px-4">
-        <div className="flex items-center justify-between gap-2 xs:gap-3 mb-3 xs:mb-4">
-          <div className="flex-1"></div> {/* Spacer */}
-          <h3 className="text-base xs:text-lg sm:text-2xl md:text-3xl font-bold text-stone-900 group-hover:text-orange-500 transition-colors duration-300 text-center truncate">
-            {category.name}
-          </h3>
-          <div className="flex-1 flex justify-end">
-            {/* Show View Products button only if category has more than 4 products */}
-            {productCount > 4 && (
-              <Link 
-                href={`/products?category=${category.slug}`}
-                className="inline-flex items-center gap-1 px-2 xs:px-3 py-1 xs:py-1.5 bg-orange-500 text-white text-[10px] xs:text-xs font-semibold rounded-md hover:bg-orange-600 transition-all duration-300 shadow-sm hover:shadow-md flex-shrink-0 whitespace-nowrap"
-              >
-                View All
-                <ArrowRight className="w-4 h-4 xs:w-3 xs:h-3" />
-              </Link>
-            )}
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <div className="h-0.5 xs:h-1 w-16 xs:w-20 bg-orange-500 rounded-full"></div>
-        </div>
-      </div>
+              {visibleCategories.map((category, index) => {
+                const productCount = categoryProductCounts[category._id] || 0;
+                
+                return (
+                  <div 
+                    key={category._id} 
+                    className="animate-fade-in-up" 
+                    style={{ 
+                      animationDelay: `${index * 300}ms`,
+                      animationFillMode: 'both'
+                    }}
+                  >
+                    <div className="mb-4 xs:mb-5 sm:mb-6 px-2 xs:px-3 sm:px-4">
+                      <div className="flex items-center justify-between gap-2 xs:gap-3 mb-3 xs:mb-4">
+                        <div className="flex-1"></div> {/* Spacer */}
+                        <h3 className="text-base xs:text-lg sm:text-2xl md:text-3xl font-bold text-[#0F172A] group-hover:text-[#D4AF37] transition-colors duration-300 text-center truncate">
+                          {category.name}
+                        </h3>
+                        <div className="flex-1 flex justify-end">
+                          {/* Show View Products button only if category has more than 4 products */}
+                          {productCount > 4 && (
+                            <Link 
+                              href={`/products?category=${category.slug}`}
+                              className="inline-flex items-center gap-1 px-2 xs:px-3 py-1 xs:py-1.5 gold-gradient text-white text-[10px] xs:text-xs font-semibold rounded-md transition-all duration-300 shadow-sm shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/30 flex-shrink-0 whitespace-nowrap"
+                            >
+                              View All
+                              <ArrowRight className="w-4 h-4 xs:w-3 xs:h-3" />
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex justify-center">
+                        <div className="h-0.5 xs:h-1 w-16 xs:w-20 bg-[#D4AF37] rounded-full"></div>
+                      </div>
+                    </div>
 
-      <ProductGrid 
-        category={category._id} 
-        limit={4} 
-        hideFilters={true}
-      />
-    </div>
-  );
-})}
+                    <ProductGrid 
+                      category={category._id} 
+                      limit={4} 
+                      hideFilters={true}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -271,7 +271,7 @@ export default function HomeClient({ categories }: HomeClientProps) {
       {!checkingProducts && visibleCategories.length === 0 && (
         <section className="py-6 xs:py-8 sm:py-12 bg-white">
           <div className="container mx-auto px-1 text-center">
-            <p className="text-stone-500 text-xs xs:text-sm">No products available at the moment. Please check back later.</p>
+            <p className="text-[#64748B] text-xs xs:text-sm">No products available at the moment. Please check back later.</p>
           </div>
         </section>
       )}
@@ -286,7 +286,6 @@ export default function HomeClient({ categories }: HomeClientProps) {
       <FeaturesBarSection />
       <ReviewsAndFAQSection/>
 
-      <CallUsBannerSection />
 
       <style jsx global>{`
         @keyframes slide-in {

@@ -91,8 +91,8 @@ export default function FilterDropdown<T>({
           compact ? 'px-2 py-1 text-xs' : ''
         } ${
           isActive
-            ? 'bg-orange-500 text-white border-orange-500 shadow-lg hover:shadow-orange-500/30 hover:bg-orange-600 transform hover:scale-[1.02] active:scale-[0.98]'
-            : 'bg-white text-stone-700 border-stone-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 shadow-sm hover:shadow-md'
+            ? 'gold-gradient text-white border-[#D4AF37] shadow-lg shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/30 transform hover:scale-[1.02] active:scale-[0.98]'
+            : 'bg-white text-[#0F172A] border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#FBF7F1] hover:text-[#B8860B] shadow-sm hover:shadow-md'
         }`}
       >
         <span className={`max-w-[120px] truncate ${compact ? 'max-w-[80px]' : ''}`}>
@@ -111,7 +111,7 @@ export default function FilterDropdown<T>({
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1 min-w-[180px] bg-white border border-stone-200 rounded-xl shadow-lg z-20 max-h-60 overflow-y-auto py-1">
+        <div className="absolute top-full left-0 mt-1 min-w-[180px] bg-white border border-[#D4AF37]/30 rounded-xl shadow-lg z-20 max-h-60 overflow-y-auto py-1">
           {options.map((option, index) => {
             const isSelected = multiSelect
               ? Array.isArray(value) && value.includes(option.value)
@@ -123,8 +123,8 @@ export default function FilterDropdown<T>({
                 onClick={() => handleSelect(option.value)}
                 className={`w-full text-left px-4 py-2.5 text-sm transition-all duration-200 ${
                   isSelected
-                    ? 'bg-orange-500 text-white hover:bg-orange-600'
-                    : 'text-stone-700 hover:bg-orange-50 hover:text-orange-600'
+                    ? 'gold-gradient text-white'
+                    : 'text-[#0F172A] hover:bg-[#FBF7F1] hover:text-[#B8860B]'
                 } ${index === 0 ? 'rounded-t-xl' : ''} ${index === options.length - 1 ? 'rounded-b-xl' : ''}`}
               >
                 <div className="flex items-center justify-between">

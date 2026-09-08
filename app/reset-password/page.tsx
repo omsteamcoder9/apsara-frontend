@@ -16,23 +16,23 @@ export default async function ResetPasswordPage({ searchParams }: PageProps) {
 
   if (!token) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F5E9D3]/10">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#D4AF37]">Invalid Reset Link</h1>
-          <p className="mt-2 text-[#C9B08A]">The reset link is missing or invalid.</p>
+          <h1 className="text-2xl font-bold text-[#B8860B]">Invalid Reset Link</h1>
+          <p className="mt-2 text-[#64748B]">The reset link is missing or invalid.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#D4AF37]/5 via-[#D4AF37]/5 to-[#D4AF37]/5 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#D4AF37]/5 via-[#B8860B]/5 to-[#D4AF37]/5 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#0F172A]">
             Reset your password
           </h2>
-          <p className="mt-2 text-center text-sm text-[#C9B08A]">
+          <p className="mt-2 text-center text-sm text-[#64748B]">
             Enter your new password below
           </p>
         </div>

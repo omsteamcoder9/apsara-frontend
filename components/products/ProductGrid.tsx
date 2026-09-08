@@ -302,9 +302,9 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
     return (
       <div className="flex justify-center items-center py-8 sm:py-12">
         <div className="relative">
-          <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-4 border-orange-500 border-t-transparent"></div>
+          <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-4 border-[#D4AF37] border-t-transparent"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-orange-500/20 animate-pulse"></div>
+            <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-[#D4AF37]/20 animate-pulse"></div>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
   if (error) {
     return (
       <div className="text-center py-8 sm:py-12 px-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8 max-w-md mx-auto">
+        <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-8 max-w-md mx-auto">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -323,7 +323,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
           <p className="text-red-600 text-base sm:text-lg mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()}
-            className="bg-orange-500 text-white px-6 py-2.5 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 text-sm font-medium shadow-lg"
+            className="gold-gradient gold-gradient-hover text-white px-6 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium shadow-lg shadow-[#D4AF37]/20 hover:-translate-y-0.5"
           >
             Try Again
           </button>
@@ -347,14 +347,14 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
             <div className="lg:hidden mb-4">
               <button
                 onClick={() => setIsMobileFiltersOpen(true)}
-                className="w-full py-3 bg-orange-500 text-white rounded-xl font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-orange-500/30 hover:bg-orange-600 transition-all duration-200 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full py-3 gold-gradient text-white rounded-xl font-medium flex items-center justify-center gap-2 shadow-lg shadow-[#D4AF37]/20 transition-all duration-200 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z" />
                 </svg>
                 Filters
                 {activeFilterCount > 0 && (
-                  <span className="ml-2 bg-white text-orange-600 rounded-full px-2 py-0.5 text-xs font-bold">
+                  <span className="ml-2 bg-white text-[#B8860B] rounded-full px-2 py-0.5 text-xs font-bold">
                     {activeFilterCount}
                   </span>
                 )}
@@ -367,16 +367,16 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
                 <div ref={mobileFiltersRef} className="absolute right-0 top-0 h-full w-80 bg-white p-6 overflow-y-auto shadow-2xl">
                   <div className="flex justify-between items-center mb-6">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                      <div className="w-8 h-8 gold-gradient rounded-lg flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z" />
                         </svg>
                       </div>
-                      <h2 className="text-lg font-semibold text-stone-900">Filters</h2>
+                      <h2 className="text-lg font-semibold text-[#0F172A]">Filters</h2>
                     </div>
                     <button
                       onClick={() => setIsMobileFiltersOpen(false)}
-                      className="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-xl transition-all duration-200 cursor-pointer"
+                      className="p-2 text-[#64748B] hover:text-[#0F172A] hover:bg-[#FBF7F1] rounded-xl transition-all duration-200 cursor-pointer"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -386,7 +386,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
                   <div className="space-y-6">
                     {/* Categories */}
                     <div>
-                      <h3 className="font-semibold text-stone-900 mb-3 text-sm">Categories</h3>
+                      <h3 className="font-semibold text-[#0F172A] mb-3 text-sm">Categories</h3>
                       <div className="space-y-2">
                         {categoryOptions.map((option) => (
                           <label key={option.value} className="flex items-center cursor-pointer group">
@@ -395,9 +395,9 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
                               name="category-mobile"
                               checked={filters.category === option.value}
                               onChange={() => handleCategoryChange(option.value)}
-                              className="text-orange-500 focus:ring-orange-500 focus:ring-2 rounded-full"
+                              className="text-[#D4AF37] focus:ring-[#D4AF37] focus:ring-2 rounded-full"
                             />
-                            <span className="ml-2 text-stone-600 group-hover:text-stone-900 transition-colors">{option.label}</span>
+                            <span className="ml-2 text-[#64748B] group-hover:text-[#0F172A] transition-colors">{option.label}</span>
                           </label>
                         ))}
                       </div>
@@ -405,7 +405,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
 
                     {/* Price Range */}
                     <div>
-                      <h3 className="font-semibold text-stone-900 mb-3 text-sm">Price Range</h3>
+                      <h3 className="font-semibold text-[#0F172A] mb-3 text-sm">Price Range</h3>
                       <div className="space-y-2">
                         {priceRangeOptions.map((option) => (
                           <label key={option.value} className="flex items-center cursor-pointer group">
@@ -414,9 +414,9 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
                               name="price-mobile"
                               checked={filters.priceRange === option.value}
                               onChange={() => handlePriceRangeChange(option.value)}
-                              className="text-orange-500 focus:ring-orange-500 focus:ring-2 rounded-full"
+                              className="text-[#D4AF37] focus:ring-[#D4AF37] focus:ring-2 rounded-full"
                             />
-                            <span className="ml-2 text-stone-600 group-hover:text-stone-900 transition-colors">{option.label}</span>
+                            <span className="ml-2 text-[#64748B] group-hover:text-[#0F172A] transition-colors">{option.label}</span>
                           </label>
                         ))}
                       </div>
@@ -425,7 +425,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
                     {/* Clear Filters Button */}
                     <button
                       onClick={clearAllFilters}
-                      className="w-full py-2.5 text-sm text-stone-600 border border-stone-200 rounded-xl hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:shadow-orange-500/30 transition-all duration-200 cursor-pointer"
+                      className="w-full py-2.5 text-sm text-[#0F172A] border border-[#D4AF37]/30 rounded-xl hover:gold-gradient hover:text-white hover:border-[#D4AF37] transition-all duration-200 cursor-pointer"
                     >
                       Clear All Filters
                     </button>
@@ -438,7 +438,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
             <div 
               ref={filterBarRef}
               className={`
-                hidden lg:block bg-white border-b border-stone-200 py-3 transition-all duration-300
+                hidden lg:block bg-white border-b border-[#D4AF37]/20 py-3 transition-all duration-300
                 ${isSticky ? 'fixed top-0 left-0 right-0 z-40 bg-white shadow-md' : 'relative'}
               `}
               style={{
@@ -469,10 +469,10 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
                     {activeFilterCount > 0 && (
                       <button
                         onClick={clearAllFilters}
-                        className="text-sm text-stone-500 hover:text-orange-600 transition-colors flex items-center gap-1"
+                        className="text-sm text-[#64748B] hover:text-[#B8860B] transition-colors flex items-center gap-1"
                       >
                         <span>Clear all</span>
-                        <span className="bg-orange-500 text-white rounded-full px-2 py-0.5 text-xs font-medium">
+                        <span className="gold-gradient text-white rounded-full px-2 py-0.5 text-xs font-medium">
                           {activeFilterCount}
                         </span>
                       </button>
@@ -481,7 +481,7 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
 
                   {/* Right side - Sort Dropdown */}
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-stone-500 hidden sm:inline">Sort by:</span>
+                    <span className="text-sm text-[#64748B] hidden sm:inline">Sort by:</span>
                     <SortDropdown
                       sortBy={filters.sortBy}
                       sortOrder={filters.sortOrder}
@@ -502,28 +502,28 @@ export default function ProductGrid({ category, search, limit, hideFilters = fal
         {/* Products Grid */}
         {products.length === 0 ? (
           <div className="text-center py-8 sm:py-12">
-            <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8 max-w-md mx-auto">
-              <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-10 h-10 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-8 max-w-md mx-auto">
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D4AF37]/20">
+                <svg className="w-10 h-10 text-[#D4AF37]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-stone-900 mb-2">
+              <h3 className="text-xl font-semibold text-[#0F172A] mb-2">
                 No Products Found
               </h3>
-              <p className="text-stone-500 mb-6 text-sm">
+              <p className="text-[#64748B] mb-6 text-sm">
                 Try adjusting your filters to see more results.
               </p>
               <button 
                 onClick={clearAllFilters}
-                className="bg-orange-500 text-white px-6 py-2.5 rounded-xl font-medium hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 text-sm shadow-lg"
+                className="gold-gradient gold-gradient-hover text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm shadow-lg shadow-[#D4AF37]/20 hover:-translate-y-0.5"
               >
                 Clear All Filters
               </button>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-4 md:gap-6 mt-5">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

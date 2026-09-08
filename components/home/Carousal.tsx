@@ -221,15 +221,15 @@ export default function CategoryCarousel({
       <section className="w-full py-8 sm:py-12 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-4 sm:px-6 lg:px-10">
           <div className="mb-6 sm:mb-10 text-center">
-            <div className="mx-auto h-2 w-20 sm:h-3 sm:w-32 animate-pulse rounded-full bg-gray-200" />
-            <div className="mx-auto mt-3 sm:mt-4 h-6 sm:h-8 w-48 sm:w-64 animate-pulse rounded bg-gray-200" />
-            <div className="mx-auto mt-2 sm:mt-3 h-2 w-60 sm:h-3 sm:w-80 max-w-full animate-pulse rounded bg-gray-100" />
+            <div className="mx-auto h-2 w-20 sm:h-3 sm:w-32 animate-pulse rounded-full bg-[#D4AF37]/20" />
+            <div className="mx-auto mt-3 sm:mt-4 h-6 sm:h-8 w-48 sm:w-64 animate-pulse rounded bg-[#D4AF37]/10" />
+            <div className="mx-auto mt-2 sm:mt-3 h-2 w-60 sm:h-3 sm:w-80 max-w-full animate-pulse rounded bg-[#D4AF37]/5" />
           </div>
           <div className="flex gap-3 sm:gap-5 overflow-hidden">
             {[...Array(isMobile ? 4 : 6)].map((_, i) => (
               <div
                 key={i}
-                className="h-[180px] sm:h-[240px] min-w-[120px] sm:min-w-[150px] animate-pulse rounded-xl bg-gray-100"
+                className="h-[180px] sm:h-[240px] min-w-[120px] sm:min-w-[150px] animate-pulse rounded-xl bg-[#FBF7F1]"
               />
             ))}
           </div>
@@ -241,15 +241,15 @@ export default function CategoryCarousel({
   if (!categories.length) return null;
 
   return (
-    <section className="relative w-full overflow-hidden py-8 sm:py-12 sm:py-14 lg:py-16">
+    <section className="relative w-full overflow-hidden py-8 sm:py-12 sm:py-14 lg:py-16 bg-white">
       <div className="mx-auto max-w-[1440px] px-3 sm:px-4 sm:px-6 lg:px-10">
 
         {/* SECTION HEADER */}
         <div className="mb-6 sm:mb-9 text-center sm:mb-11">
           <div className="mb-2 sm:mb-3 flex items-center justify-center gap-2 sm:gap-3">
             <span className="text-[15px] sm:text-[19px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
-              <span className="text-stone-900">Shop By </span>
-              <span className="text-orange-500">Category</span>
+              <span className="text-[#0F172A]">Shop By </span>
+              <span className="text-[#D4AF37]">Category</span>
             </span>
           </div>
         </div>
@@ -289,16 +289,16 @@ export default function CategoryCarousel({
                 return (
                   <div
                     key={`${category._id}-${index}`}
-                    className={`${cardWidth} flex-shrink-0 cursor-pointer`}
+                    className={`${cardWidth} flex-shrink-0 cursor-pointer group`}
                     onClick={() =>
                       handleCategoryClick(category)
                     }
                   >
-                    {/* CARD */}
-                    <div className={`relative ${cardHeight} overflow-hidden rounded-xl border border-[#F97316]/20 bg-[#070809] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#F97316]/70 group-hover:shadow-[0_12px_30px_rgba(249,115,22,0.15)]`}>
+                    {/* CARD - Light background */}
+                    <div className={`relative ${cardHeight} overflow-hidden rounded-xl border border-[#D4AF37]/20 bg-[#FBF7F1] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#D4AF37]/70 group-hover:shadow-[0_12px_30px_rgba(212,175,55,0.15)]`}>
 
-                      {/* Subtle orange glow - Reduced on mobile */}
-                      <div className={`pointer-events-none absolute left-1/2 top-[-30px] -translate-x-1/2 rounded-full bg-[#F97316]/10 blur-3xl ${isMobile ? 'h-20 w-20' : 'h-32 w-32'}`} />
+                      {/* Subtle gold glow - Reduced on mobile */}
+                      <div className={`pointer-events-none absolute left-1/2 top-[-30px] -translate-x-1/2 rounded-full bg-[#D4AF37]/10 blur-3xl ${isMobile ? 'h-20 w-20' : 'h-32 w-32'}`} />
 
                       {/* Product image area */}
                       <div className={`relative flex ${imageContainerHeight} items-center justify-center px-2 sm:px-3 pt-2 sm:pt-4`}>
@@ -327,19 +327,19 @@ export default function CategoryCarousel({
                         <div
                           className={`fallback-category ${
                             imageUrl ? 'hidden' : ''
-                          } relative z-10 flex ${isMobile ? 'h-16 w-16' : 'h-24 w-24'} items-center justify-center rounded-full border border-[#F97316]/30 bg-[#F97316]/10`}
+                          } relative z-10 flex ${isMobile ? 'h-16 w-16' : 'h-24 w-24'} items-center justify-center rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10`}
                         >
                           <Icon
                             size={isMobile ? 28 : 40}
                             strokeWidth={1.2}
-                            className="text-[#F97316]"
+                            className="text-[#D4AF37]"
                           />
                         </div>
                       </div>
 
                       {/* Icon */}
                       <div className="relative z-10 flex justify-center mt-2 sm:mt-4">
-                        <div className={`flex ${iconWrapperSize} items-center justify-center rounded-full border border-[#F97316]/60 bg-[#F97316]/10 text-[#F97316] transition-all duration-300 group-hover:bg-[#F97316] group-hover:text-white group-hover:shadow-[0_0_18px_rgba(249,115,22,0.35)]`}>
+                        <div className={`flex ${iconWrapperSize} items-center justify-center rounded-full border border-[#D4AF37]/60 bg-[#D4AF37]/10 text-[#D4AF37] transition-all duration-300 group-hover:gold-gradient group-hover:text-white group-hover:border-[#D4AF37] group-hover:shadow-[0_0_18px_rgba(212,175,55,0.35)]`}>
                           <Icon size={isMobile ? 14 : 18} strokeWidth={1.7} />
                         </div>
                       </div>
@@ -347,19 +347,19 @@ export default function CategoryCarousel({
                       {/* Category Name & Product Count */}
                       <div className="relative z-10 mt-1 sm:mt-2 text-center">
 
-                        <h3 className={`truncate px-1 sm:px-2 ${titleSize} font-bold text-white transition-colors duration-300 group-hover:text-[#F97316]`}>
+                        <h3 className={`truncate px-1 sm:px-2 ${titleSize} font-bold text-[#0F172A] transition-colors duration-300 group-hover:text-[#D4AF37]`}>
                           {category.name}
                         </h3>
 
                         {category.status === 'inactive' && (
-                          <span className={`mt-0.5 sm:mt-1 block ${isMobile ? 'text-[8px]' : 'text-[10px]'} font-medium text-[#F97316]`}>
+                          <span className={`mt-0.5 sm:mt-1 block ${isMobile ? 'text-[8px]' : 'text-[10px]'} font-medium text-[#D4AF37]`}>
                             Coming Soon
                           </span>
                         )}
                       </div>
 
-                      {/* Bottom orange line */}
-                      <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-[#F97316] shadow-[0_0_10px_rgba(249,115,22,0.5)] transition-all duration-500 group-hover:w-[60%]" />
+                      {/* Bottom gold line */}
+                      <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-500 group-hover:w-[60%]" />
                     </div>
                   </div>
                 );

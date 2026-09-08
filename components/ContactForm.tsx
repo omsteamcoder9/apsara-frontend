@@ -65,13 +65,13 @@ export default function ContactForm() {
   // Don't render form until mounted on client
   if (!isMounted) {
     return (
-      <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl border border-gray-200 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+      <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl border border-[#D4AF37]/20 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded mb-6"></div>
+          <div className="h-8 bg-[#FBF7F1] rounded mb-6"></div>
           <div className="space-y-4">
-            <div className="h-4 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded"></div>
-            <div className="h-24 bg-gray-200 rounded"></div>
+            <div className="h-4 bg-[#FBF7F1] rounded"></div>
+            <div className="h-4 bg-[#FBF7F1] rounded"></div>
+            <div className="h-24 bg-[#FBF7F1] rounded"></div>
           </div>
         </div>
       </div>
@@ -79,14 +79,14 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl border border-gray-200 hover:border-[#ff6b00]/50 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(255,107,0,0.10)] transition-all duration-300 relative overflow-hidden">
-      {/* Orange glow on hover */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,107,0,0.05),transparent_55%)] opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(212,175,55,0.10)] transition-all duration-300 relative overflow-hidden">
+      {/* Gold glow on hover */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(212,175,55,0.05),transparent_55%)] opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
-      {/* Bottom orange line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff6b00] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+      {/* Bottom gold line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
 
-      <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center relative">
+      <h2 className="text-3xl font-bold text-[#0F172A] mb-6 text-center relative">
         Get In Touch
       </h2>
       
@@ -106,7 +106,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="space-y-6 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">
+            <label htmlFor="name" className="block text-sm font-medium text-[#0F172A] mb-2 cursor-pointer">
               Full Name
             </label>
             <input
@@ -115,13 +115,13 @@ export default function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b00] focus:border-[#ff6b00] transition-all duration-200 cursor-text text-gray-900 placeholder:text-gray-400"
+              className="w-full px-4 py-3 bg-[#FBF7F1] border border-[#D4AF37]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 cursor-text text-[#0F172A] placeholder:text-[#64748B]"
               placeholder="Enter your full name"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">
+            <label htmlFor="email" className="block text-sm font-medium text-[#0F172A] mb-2 cursor-pointer">
               Email Address
             </label>
             <input
@@ -130,14 +130,14 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b00] focus:border-[#ff6b00] transition-all duration-200 cursor-text text-gray-900 placeholder:text-gray-400"
+              className="w-full px-4 py-3 bg-[#FBF7F1] border border-[#D4AF37]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 cursor-text text-[#0F172A] placeholder:text-[#64748B]"
               placeholder="Enter your email address"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">
+          <label htmlFor="phone" className="block text-sm font-medium text-[#0F172A] mb-2 cursor-pointer">
             Phone Number
           </label>
           <input
@@ -146,13 +146,13 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b00] focus:border-[#ff6b00] transition-all duration-200 cursor-text text-gray-900 placeholder:text-gray-400"
+            className="w-full px-4 py-3 bg-[#FBF7F1] border border-[#D4AF37]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 cursor-text text-[#0F172A] placeholder:text-[#64748B]"
             placeholder="Enter your phone number (optional)"
           />
         </div>
 
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">
+          <label htmlFor="subject" className="block text-sm font-medium text-[#0F172A] mb-2 cursor-pointer">
             Subject *
           </label>
           <input
@@ -162,13 +162,13 @@ export default function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b00] focus:border-[#ff6b00] transition-all duration-200 cursor-text text-gray-900 placeholder:text-gray-400"
+            className="w-full px-4 py-3 bg-[#FBF7F1] border border-[#D4AF37]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 cursor-text text-[#0F172A] placeholder:text-[#64748B]"
             placeholder="What is this regarding?"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">
+          <label htmlFor="message" className="block text-sm font-medium text-[#0F172A] mb-2 cursor-pointer">
             Message *
           </label>
           <textarea
@@ -178,7 +178,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b00] focus:border-[#ff6b00] transition-all duration-200 resize-vertical cursor-text text-gray-900 placeholder:text-gray-400"
+            className="w-full px-4 py-3 bg-[#FBF7F1] border border-[#D4AF37]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 resize-vertical cursor-text text-[#0F172A] placeholder:text-[#64748B]"
             placeholder="Tell us how we can help you..."
           />
         </div>
@@ -186,7 +186,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[#ff6b00] hover:bg-[#ff7b1a] text-white py-3 px-6 rounded-lg font-semibold hover:shadow-[0_8px_30px_rgba(255,107,0,0.25)] focus:ring-2 focus:ring-[#ff6b00] focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg cursor-pointer transform hover:scale-[1.02]"
+          className="w-full gold-gradient gold-gradient-hover text-white py-3 px-6 rounded-lg font-semibold hover:shadow-[0_8px_30px_rgba(212,175,55,0.25)] focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg cursor-pointer transform hover:scale-[1.02]"
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">

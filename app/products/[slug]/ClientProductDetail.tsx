@@ -68,6 +68,16 @@ const MobileFloatingButton = ({
   const [addingToBuy, setAddingToBuy] = useState(false);
   const [showAddedMessage, setShowAddedMessage] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const { cart, updateCartItem } = useCart();
+  
+  // Check if product is in cart
+  const cartItem = cart?.items?.find(item => {
+    if (!item || !item.product) return false;
+    if (!product || !product._id) return false;
+    return item.product._id === product._id;
+  });
+
+  const isInCart = !!cartItem;
   
   // ✅ Get price based on selected size
   const getDisplayPrice = () => {
@@ -143,29 +153,34 @@ const MobileFloatingButton = ({
       transform transition-transform duration-300 ease-in-out
       ${isVisible ? 'translate-y-0' : 'translate-y-full'}
     `}>
-      <div className="bg-white border-t border-gray-300">
-        <div className="flex items-center justify-between px-3 py-1.5 bg-gray-100 border-b border-gray-300">
-          <span className="text-xs font-medium text-gray-800">Quantity:</span>
+      <div className="bg-white border-t border-[#D4AF37]/30">
+        <div className="flex items-center justify-between px-3 py-1.5 bg-[#FBF7F1] border-b border-[#D4AF37]/20">
+          <span className="text-xs font-medium text-[#0F172A]">Quantity:</span>
           <div className="flex items-center gap-1">
             <button
               onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
               disabled={quantity <= 1}
-              className="w-6 h-6 flex items-center justify-center bg-white border border-gray-400 rounded-md text-gray-800 disabled:opacity-40 hover:bg-[#2D1D0B] hover:text-[#F5E9D3] hover:border-[#4A3516] transition-colors duration-200"
+              className="w-6 h-6 flex items-center justify-center bg-white border border-[#D4AF37]/30 rounded-md text-[#0F172A] disabled:opacity-40 hover:gold-gradient hover:text-white hover:border-[#D4AF37] transition-colors duration-200"
             >
               -
             </button>
-            <span className="text-sm font-medium w-6 text-center text-gray-900">{quantity}</span>
+            <span className="text-sm font-medium w-6 text-center text-[#0F172A]">{quantity}</span>
             <button
               onClick={() => {
                 const maxStock = currentStock || 99;
                 setQuantity(prev => Math.min(maxStock, prev + 1))
               }}
               disabled={isOutOfStock || quantity >= (currentStock || 99)}
-              className="w-6 h-6 flex items-center justify-center bg-white border border-gray-400 rounded-md text-gray-800 disabled:opacity-40 hover:bg-[#2D1D0B] hover:text-[#F5E9D3] hover:border-[#4A3516] transition-colors duration-200"
+              className="w-6 h-6 flex items-center justify-center bg-white border border-[#D4AF37]/30 rounded-md text-[#0F172A] disabled:opacity-40 hover:gold-gradient hover:text-white hover:border-[#D4AF37] transition-colors duration-200"
             >
               +
             </button>
           </div>
+          {isInCart && cartItem?.quantity && cartItem.quantity > 1 && (
+            <span className="text-[10px] gold-gradient text-white px-2 py-0.5 rounded-full">
+              {cartItem.quantity} in cart
+            </span>
+          )}
         </div>
         
         <div className="flex items-stretch h-10">
@@ -175,15 +190,15 @@ const MobileFloatingButton = ({
             className={`
               flex-1 flex items-center justify-center gap-1 transition-all duration-300 relative
               ${isOutOfStock || addingToCart
-                ? 'bg-gray-400 cursor-not-allowed' 
-                : 'bg-[#2D1D0B] text-[#F5E9D3] hover:bg-[#3D2D1B] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] border border-[#4A3516] shadow-lg cursor-pointer'
+                ? 'bg-gray-300 cursor-not-allowed text-white' 
+                : 'gold-gradient gold-gradient-hover text-white shadow-lg shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/30 cursor-pointer'
               }
             `}
           >
             {addingToCart ? (
-              <div className="animate-spin rounded-full h-3.5 w-3.5 border-b-2 border-[#F5E9D3]"></div>
+              <div className="animate-spin rounded-full h-3.5 w-3.5 border-b-2 border-white"></div>
             ) : showAddedMessage ? (
-              <span className="text-xs font-medium animate-pulse text-[#F5E9D3]">Added! ✓</span>
+              <span className="text-xs font-medium animate-pulse text-white">Added! ✓</span>
             ) : (
               <>
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,13 +215,13 @@ const MobileFloatingButton = ({
             className={`
               flex-1 flex items-center justify-center gap-1 transition-colors duration-200
               ${isOutOfStock || addingToBuy
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                : 'bg-[#2D1D0B] text-[#F5E9D3] hover:bg-[#3D2D1B] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] border border-[#4A3516] shadow-lg'
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                : 'bg-[#0F172A] text-white hover:bg-[#1E293B] hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] shadow-lg cursor-pointer'
               }
             `}
           >
             {addingToBuy ? (
-              <div className="animate-spin rounded-full h-3.5 w-3.5 border-b-2 border-[#F5E9D3]"></div>
+              <div className="animate-spin rounded-full h-3.5 w-3.5 border-b-2 border-white"></div>
             ) : (
               <>
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -369,10 +384,19 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
   const [selectedSize, setSelectedSize] = useState<Size | string | null>(null);
   const [currentImages, setCurrentImages] = useState(product?.images || []);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const { addToCart, cart } = useCart();
+  const { addToCart, updateCartItem, cart } = useCart();
   const router = useRouter();
 
   const hasSizes = product?.sizes && product.sizes.length > 0;
+
+  // Check if product is in cart
+  const cartItem = cart?.items?.find(item => {
+    if (!item || !item.product) return false;
+    if (!product || !product._id) return false;
+    return item.product._id === product._id;
+  });
+
+  const isInCart = !!cartItem;
 
   const getDisplayPrice = () => {
     let basePrice = selectedVariant ? selectedVariant.price : (product?.basePrice || 0);
@@ -484,6 +508,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
     }
   }, [handleScroll]);
 
+  // ✅ Updated: Check if item exists and update quantity or add new
   const handleMobileAddToCart = async (quantity: number, variant: ProductVariant | null, size: Size | string | null) => {
     if (!product) {
       alert('Product not found');
@@ -491,7 +516,25 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
     }
     
     try {
-      await addToCart(product, quantity, variant || undefined, size || undefined);
+      // Check if product with same size is in cart
+      const existingItem = cart?.items?.find(item => {
+        if (!item || !item.product) return false;
+        if (item.product._id !== product._id) return false;
+        // If size is selected, check same size
+        if (size) {
+          return item.selectedSize === size;
+        }
+        return true;
+      });
+
+      if (existingItem) {
+        // Update quantity
+        const newQuantity = (existingItem.quantity || 1) + quantity;
+        await updateCartItem(existingItem._id, newQuantity);
+      } else {
+        // Add new item
+        await addToCart(product, quantity, variant || undefined, size || undefined);
+      }
       return;
     } catch (error) {
       console.error('❌ Mobile - Error adding to cart:', error);
@@ -563,10 +606,10 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-[#f2f2f2] flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-xl font-bold text-gray-800">Product not found</h1>
-          <p className="text-gray-600 mt-2">The product you are looking for does not exist.</p>
+          <h1 className="text-xl font-bold text-[#0F172A]">Product not found</h1>
+          <p className="text-[#64748B] mt-2">The product you are looking for does not exist.</p>
         </div>
       </div>
     );
@@ -591,7 +634,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                           <button
                             onClick={() => handleImageThumbnailClick(Math.max(0, selectedImageIndex - 1))}
                             disabled={selectedImageIndex === 0}
-                            className="absolute top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-[#2D1D0B] hover:text-[#F5E9D3] shadow-lg border border-gray-300 hover:border-[#4A3516] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                            className="absolute top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/80 hover:gold-gradient hover:text-white shadow-lg border border-[#D4AF37]/30 hover:border-[#D4AF37] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                             style={{ top: '50%', left: '10%' }}
                             aria-label="Previous image"
                           >
@@ -617,7 +660,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                           <button
                             onClick={() => handleImageThumbnailClick(Math.min(currentImages.length - 1, selectedImageIndex + 1))}
                             disabled={selectedImageIndex === currentImages.length - 1}
-                            className="absolute right-2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-[#2D1D0B] hover:text-[#F5E9D3] shadow-lg border border-gray-300 hover:border-[#4A3516] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                            className="absolute right-2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/80 hover:gold-gradient hover:text-white shadow-lg border border-[#D4AF37]/30 hover:border-[#D4AF37] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                             style={{ top: '50%', right: '10%' }}
                           >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -627,8 +670,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                         )}
                       </>
                     ) : (
-                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">No image</span>
+                      <div className="w-full h-full bg-[#FBF7F1] flex items-center justify-center">
+                        <span className="text-[#64748B] text-sm">No image</span>
                       </div>
                     )}
                   </div>
@@ -656,7 +699,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                                     flex-shrink-0 w-16 h-16 md:w-20 md:h-20 relative rounded-md overflow-hidden transition-all
                                     ${selectedImageIndex === actualIndex 
                                       ? 'border-[#D4AF37] ring-2 ring-[#D4AF37]/10 scale-105' 
-                                      : 'border-gray-200 hover:border-[#D4AF37]/60'
+                                      : 'border-[#D4AF37]/20 hover:border-[#D4AF37]/60'
                                     }
                                   `}
                                 >
@@ -669,15 +712,15 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                                       sizes="80px"
                                     />
                                   ) : (
-                                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                                      <span className="text-gray-400 text-xs">Image {actualIndex + 1}</span>
+                                    <div className="w-full h-full bg-[#FBF7F1] flex items-center justify-center">
+                                      <span className="text-[#64748B] text-xs">Image {actualIndex + 1}</span>
                                     </div>
                                   )}
                                   
                                   {selectedImageIndex === actualIndex && (
                                     <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/10 via-[#D4AF37]/10 to-[#D4AF37]/10 flex items-center justify-center">
-                                      <div className="w-6 h-6 rounded-full bg-[#2D1D0B] border border-[#4A3516] flex items-center justify-center">
-                                        <svg className="w-3 h-3 text-[#F5E9D3]" fill="currentColor" viewBox="0 0 20 20">
+                                      <div className="w-6 h-6 rounded-full gold-gradient border border-[#D4AF37] flex items-center justify-center">
+                                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                         </svg>
                                       </div>
@@ -697,10 +740,10 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
               {/* Product Details */}
               <div className="space-y-3 p-3 sm:p-4">
                 {/* Product Name */}
-                <h1 className="text-lg sm:text-xl font-bold text-gray-900">
+                <h1 className="text-lg sm:text-xl font-bold text-[#0F172A]">
                   {product.name}
                   {selectedVariant && (
-                    <span className="text-base font-normal text-gray-600 ml-2">
+                    <span className="text-base font-normal text-[#64748B] ml-2">
                       - {selectedVariant.variantName}
                     </span>
                   )}
@@ -709,7 +752,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                 {/* Variant Selection */}
                 {product.variants && product.variants.length > 0 && (
                   <div className="space-y-2">
-                    <h3 className="text-sm font-medium text-gray-900">Select Pack:</h3>
+                    <h3 className="text-sm font-medium text-[#0F172A]">Select Pack:</h3>
                     <div className="flex flex-wrap gap-2">
                       {product.variants.map((variant) => {
                         const weightDisplay = variant.weight && variant.weightUnit 
@@ -723,8 +766,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                             className={`
                               px-3 py-2 rounded-lg text-sm font-medium transition-all relative
                               ${selectedVariant?.variantName === variant.variantName
-                                ? 'bg-[#2D1D0B] text-[#F5E9D3] border-2 border-[#4A3516] shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
-                                : 'bg-gray-100 text-gray-800 border border-gray-300 hover:bg-[#2D1D0B] hover:text-[#F5E9D3] hover:border-[#4A3516] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
+                                ? 'gold-gradient text-white border-2 border-[#D4AF37] shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
+                                : 'bg-[#FBF7F1] text-[#0F172A] border border-[#D4AF37]/30 hover:gold-gradient hover:text-white hover:border-[#D4AF37] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
                               }
                             `}
                           >
@@ -748,7 +791,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                 {/* SIZE SELECTION */}
                 {availableSizes.length > 0 && (
                   <div className="space-y-2">
-                    <h3 className="text-sm font-medium text-gray-900">Select Size:</h3>
+                    <h3 className="text-sm font-medium text-[#0F172A]">Select Size:</h3>
                     <div className="flex flex-wrap gap-2">
                       {availableSizes.map((size) => {
                         const isSelected = selectedSize === size.size;
@@ -760,8 +803,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                             className={`
                               px-4 py-2 rounded-lg text-sm font-medium transition-all relative
                               ${isSelected
-                                ? 'bg-[#2D1D0B] text-[#F5E9D3] border-2 border-[#4A3516] shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
-                                : 'bg-gray-100 text-gray-800 border border-gray-300 hover:bg-[#2D1D0B] hover:text-[#F5E9D3] hover:border-[#4A3516] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
+                                ? 'gold-gradient text-white border-2 border-[#D4AF37] shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
+                                : 'bg-[#FBF7F1] text-[#0F172A] border border-[#D4AF37]/30 hover:gold-gradient hover:text-white hover:border-[#D4AF37] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]'
                               }
                             `}
                           >
@@ -771,7 +814,7 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                       })}
                     </div>
                     {selectedSize && (
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-[#64748B]">
                         Selected: {selectedSize}
                       </p>
                     )}
@@ -789,29 +832,29 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                       
                       if (isPriceDifferent && sizeData && sizeData.price !== null) {
                         return (
-                          <span className="text-xl sm:text-2xl font-bold text-gray-800">
+                          <span className="text-xl sm:text-2xl font-bold text-[#0F172A]">
                             ₹{sizeData.price.toLocaleString('en-IN')}
                           </span>
                         );
                       } else {
                         return (
                           <>
-                            <span className="text-xl sm:text-2xl font-bold text-gray-800">
+                            <span className="text-xl sm:text-2xl font-bold text-[#0F172A]">
                               ₹{displayPrice.toLocaleString('en-IN')}
                             </span>
                             {originalPrice && originalPrice > displayPrice && (
                               <>
                                 <span 
-                                  className="text-lg text-gray-500"
+                                  className="text-lg text-[#64748B]"
                                   style={{ 
                                     textDecoration: 'line-through',
-                                    textDecorationColor: '#6b7280',
+                                    textDecorationColor: '#64748B',
                                     textDecorationThickness: '2px'
                                   }}
                                 >
                                   ₹{originalPrice.toLocaleString('en-IN')}
                                 </span>
-                                <span className="text-sm font-bold text-[#D4AF37]">
+                                <span className="text-sm font-bold text-[#B8860B]">
                                   {discountPercentage}% OFF
                                 </span>
                               </>
@@ -821,6 +864,12 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                       }
                     })()}
                   </div>
+                  {/* Show cart quantity if in cart */}
+                  {isInCart && cartItem?.quantity && cartItem.quantity > 0 && (
+                    <div className="text-xs text-[#64748B]">
+                      In Cart: {cartItem.quantity} item{cartItem.quantity > 1 ? 's' : ''}
+                    </div>
+                  )}
                 </div>
 
                 {/* Add to Cart */}
@@ -847,8 +896,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                               w-full py-2 px-4 rounded-lg font-medium flex items-center justify-center gap-2 mt-10
                               transition-all duration-300 shadow cursor-pointer text-sm
                               ${currentStock <= 0 
-                                ? 'bg-black text-gray-200 cursor-not-allowed' 
-                                : 'bg-black text-[#F5E9D3] hover:bg-[#3D2D1B] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] border border-[#4A3516] shadow-lg'
+                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                : 'bg-[#0F172A] text-white hover:bg-[#1E293B] hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] shadow-lg'
                               }
                             `}
                           >
@@ -880,8 +929,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                               w-full py-2.5 px-2 rounded-lg font-medium text-xs flex items-center justify-center gap-1
                               transition-all duration-200 mt-10.5
                               ${currentStock <= 0 
-                                ? 'bg-black text-gray-400 cursor-not-allowed' 
-                                : 'bg-black text-[#F5E9D3] hover:bg-[#3D2D1B] hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] border border-[#4A3516] shadow-lg'
+                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                                : 'bg-[#0F172A] text-white hover:bg-[#1E293B] hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] shadow-lg'
                               }
                             `}
                           >
@@ -901,15 +950,15 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                   {/* Specifications */}
                   {specGroups.length > 0 && (
                     <div className="space-y-3">
-                      <h3 className="text-sm font-medium text-gray-900">Specifications</h3>
+                      <h3 className="text-sm font-medium text-[#0F172A]">Specifications</h3>
                       {specGroups.map(([category, specs], groupIndex) => (
                         <div key={groupIndex} className="space-y-1">
-                          <h4 className="text-xs font-semibold text-gray-700 uppercase tracking-wide">{category}</h4>
+                          <h4 className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">{category}</h4>
                           <div className="space-y-1">
                             {specs.map((spec, index) => (
                               <div key={index} className="flex text-sm">
-                                <span className="font-medium text-gray-700 w-2/5">{spec.key}:</span>
-                                <span className="text-gray-600 w-3/5">{spec.value}</span>
+                                <span className="font-medium text-[#0F172A] w-2/5">{spec.key}:</span>
+                                <span className="text-[#64748B] w-3/5">{spec.value}</span>
                               </div>
                             ))}
                           </div>
@@ -922,14 +971,14 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                   {(selectedVariant?.features && selectedVariant.features.length > 0) || 
                    (product.keyFeatures && product.keyFeatures.length > 0) ? (
                     <div className="space-y-2">
-                      <h3 className="text-sm font-medium text-gray-900">Key Features</h3>
+                      <h3 className="text-sm font-medium text-[#0F172A]">Key Features</h3>
                       <ul className="space-y-1">
                         {selectedVariant?.features && selectedVariant.features.length > 0 && (
                           <>
                             {selectedVariant.features.map((feature, index) => (
                               <li key={`variant-${index}`} className="flex items-start text-sm">
-                                <span className="text-[#D4AF37] mr-2 mt-0.5">✓</span>
-                                <span className="text-gray-700">{feature}</span>
+                                <span className="text-[#B8860B] mr-2 mt-0.5">✓</span>
+                                <span className="text-[#0F172A]">{feature}</span>
                               </li>
                             ))}
                           </>
@@ -938,8 +987,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
                           <>
                             {product.keyFeatures.map((feature, index) => (
                               <li key={`product-${index}`} className="flex items-start text-sm">
-                                <span className="text-[#D4AF37] mr-2 mt-0.5">✓</span>
-                                <span className="text-gray-700">{feature}</span>
+                                <span className="text-[#B8860B] mr-2 mt-0.5">✓</span>
+                                <span className="text-[#0F172A]">{feature}</span>
                               </li>
                             ))}
                           </>
@@ -950,8 +999,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
 
                   {/* Description */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900 mb-1">Description</h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">
+                    <h3 className="text-sm font-medium text-[#0F172A] mb-1">Description</h3>
+                    <p className="text-[#64748B] text-sm leading-relaxed">
                       {selectedVariant?.description || product.description}
                     </p>
                   </div>
@@ -962,8 +1011,8 @@ export default function ClientProductDetail({ product, randomProducts }: ClientP
 
           {/* Related Products */}
           {randomProducts && randomProducts.length > 0 && (
-            <div className="p-3 sm:p-8 mt-5 border-t border-gray-300 bg-white">
-              <h2 className="text-base font-bold text-gray-800 mb-2 text-center">You may also like</h2>
+            <div className="p-3 sm:p-8 mt-5 border-t border-[#D4AF37]/20 bg-white">
+              <h2 className="text-base font-bold text-[#0F172A] mb-2 text-center">You may also like</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {randomProducts.slice(0, 4).map((relatedProduct) => (
                   <div key={relatedProduct._id} className="scale-95">

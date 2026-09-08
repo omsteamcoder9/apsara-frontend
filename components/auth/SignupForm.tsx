@@ -127,17 +127,17 @@ export default function SignupForm() {
   // Show loading state during initial render
   if (!isClient) {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-white flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 sm:p-8">
+          <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-6 sm:p-8">
             <div className="text-center">
               <div className="relative">
-                <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-500 border-t-transparent mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#D4AF37] border-t-transparent mx-auto"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-6 w-6 rounded-full bg-orange-500/20 animate-pulse"></div>
+                  <div className="h-6 w-6 rounded-full bg-[#D4AF37]/20 animate-pulse"></div>
                 </div>
               </div>
-              <p className="mt-4 text-stone-600 font-medium">Loading...</p>
+              <p className="mt-4 text-[#64748B] font-medium">Loading...</p>
             </div>
           </div>
         </div>
@@ -146,18 +146,18 @@ export default function SignupForm() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 sm:p-8 hover:shadow-md transition-shadow duration-200">
+        <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-6 sm:p-8 hover:shadow-md transition-shadow duration-200">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-white font-bold text-lg sm:text-xl">ebazz</span>
+            <div className="w-14 h-14 sm:w-16 sm:h-16 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <span className="text-white font-bold text-lg sm:text-xl">AA</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-stone-900">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A]">
               {isGuestUser ? 'Complete Your Account' : 'Create Your Account'}
             </h2>
-            <p className="mt-2 text-stone-500 text-base">
+            <p className="mt-2 text-[#64748B] text-base">
               {isGuestUser ? (
                 showPasswordFields 
                   ? 'Set your password to secure your account' 
@@ -167,7 +167,7 @@ export default function SignupForm() {
                   Already have an account?{' '}
                   <Link
                     href="/login"
-                    className="font-semibold text-orange-500 hover:text-orange-600 transition-colors duration-200"
+                    className="font-semibold text-[#B8860B] hover:text-[#0F172A] transition-colors duration-200"
                   >
                     Sign in
                   </Link>
@@ -187,17 +187,17 @@ export default function SignupForm() {
             )}
             
             {isGuestUser && !showPasswordFields && (
-              <div className="bg-orange-50 border border-orange-200 text-orange-700 px-3 py-3 rounded-xl text-xs sm:text-sm flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0 mt-0.5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-[#FBF7F1] border border-[#D4AF37]/30 text-[#0F172A] px-3 py-3 rounded-xl text-xs sm:text-sm flex items-start">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0 mt-0.5 text-[#B8860B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <p className="text-orange-800">We found your order! Please complete your account setup to view your orders and track future purchases.</p>
+                <p className="text-[#0F172A]">We found your order! Please complete your account setup to view your orders and track future purchases.</p>
               </div>
             )}
             
             <div className="space-y-3 sm:space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-[#0F172A] mb-2">
                   Full Name *
                 </label>
                 <input
@@ -208,13 +208,13 @@ export default function SignupForm() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 text-sm sm:text-base border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 bg-stone-50 hover:bg-white placeholder-stone-400 text-stone-900"
+                  className="w-full px-4 py-3 text-sm sm:text-base border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 bg-white hover:bg-white placeholder-[#64748B] text-[#0F172A]"
                   placeholder="Enter your full name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[#0F172A] mb-2">
                   Email address *
                 </label>
                 <input
@@ -225,7 +225,7 @@ export default function SignupForm() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 text-sm sm:text-base border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 bg-stone-50 hover:bg-white placeholder-stone-400 text-stone-900 disabled:bg-stone-100 disabled:text-stone-500"
+                  className="w-full px-4 py-3 text-sm sm:text-base border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 bg-white hover:bg-white placeholder-[#64748B] text-[#0F172A] disabled:bg-[#FBF7F1] disabled:text-[#64748B]"
                   placeholder="Enter your email"
                   disabled={isGuestUser}
                 />
@@ -235,7 +235,7 @@ export default function SignupForm() {
               {(showPasswordFields || !isGuestUser) && (
                 <>
                   <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-stone-700 mb-2">
+                    <label htmlFor="password" className="block text-sm font-medium text-[#0F172A] mb-2">
                       Password *
                     </label>
                     <input
@@ -246,14 +246,14 @@ export default function SignupForm() {
                       required
                       value={formData.password}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 text-sm sm:text-base border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 bg-stone-50 hover:bg-white placeholder-stone-400 text-stone-900"
+                      className="w-full px-4 py-3 text-sm sm:text-base border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 bg-white hover:bg-white placeholder-[#64748B] text-[#0F172A]"
                       placeholder="Enter your password (min. 6 characters)"
                       minLength={6}
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-stone-700 mb-2">
+                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#0F172A] mb-2">
                       Confirm Password *
                     </label>
                     <input
@@ -264,7 +264,7 @@ export default function SignupForm() {
                       required
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 text-sm sm:text-base border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all duration-200 bg-stone-50 hover:bg-white placeholder-stone-400 text-stone-900"
+                      className="w-full px-4 py-3 text-sm sm:text-base border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all duration-200 bg-white hover:bg-white placeholder-[#64748B] text-[#0F172A]"
                       placeholder="Confirm your password"
                       minLength={6}
                     />
@@ -278,7 +278,7 @@ export default function SignupForm() {
                 <button
                   type="button"
                   onClick={handleGuestContinue}
-                  className="w-full bg-orange-500 text-white py-3 sm:py-4 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 font-medium shadow-lg text-sm sm:text-base cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full gold-gradient gold-gradient-hover text-white py-3 sm:py-4 rounded-xl transition-all duration-200 font-medium shadow-lg shadow-[#D4AF37]/20 text-sm sm:text-base cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:-translate-y-0.5"
                 >
                   Continue to Set Password
                 </button>
@@ -286,7 +286,7 @@ export default function SignupForm() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-orange-500 text-white py-3 sm:py-4 rounded-xl hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-200 font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm sm:text-base cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full gold-gradient gold-gradient-hover text-white py-3 sm:py-4 rounded-xl transition-all duration-200 font-medium shadow-lg shadow-[#D4AF37]/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm sm:text-base cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:-translate-y-0.5"
                 >
                   {isLoading ? (
                     <div className="flex items-center">
@@ -305,7 +305,7 @@ export default function SignupForm() {
                 <button
                   type="button"
                   onClick={() => setShowPasswordFields(false)}
-                  className="text-xs sm:text-sm text-orange-500 hover:text-orange-600 font-medium transition-colors duration-200 cursor-pointer"
+                  className="text-xs sm:text-sm text-[#B8860B] hover:text-[#0F172A] font-medium transition-colors duration-200 cursor-pointer"
                 >
                   ← Back to basic info
                 </button>

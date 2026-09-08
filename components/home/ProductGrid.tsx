@@ -80,7 +80,7 @@ export default function ProductGrid({ limit, showViewAll = true, filterBySize }:
       <div className="flex justify-center items-center py-20 bg-white">
         <div className="flex flex-col items-center gap-4">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#D4AF37]"></div>
-          <p className="text-[#C9B08A]">Loading premium products...</p>
+          <p className="text-[#64748B]">Loading premium products...</p>
         </div>
       </div>
     );
@@ -89,11 +89,11 @@ export default function ProductGrid({ limit, showViewAll = true, filterBySize }:
   if (error) {
     return (
       <div className="text-center py-20 bg-white">
-        <div className="bg-[#F5E9D3]/10 rounded-3xl p-8 max-w-md mx-auto border border-[#C9B08A]/30 shadow-lg">
+        <div className="bg-[#FBF7F1] rounded-3xl p-8 max-w-md mx-auto border border-[#D4AF37]/30 shadow-lg">
           <p className="text-red-600 text-lg mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()}
-            className="bg-gradient-to-r from-[#D4AF37] to-[#c59d2e] text-white px-8 py-3 rounded-2xl font-semibold hover:opacity-90 transform hover:-translate-y-0.5 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="gold-gradient gold-gradient-hover text-white px-8 py-3 rounded-2xl font-semibold transform hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/30"
           >
             Try Again
           </button>
@@ -108,11 +108,11 @@ export default function ProductGrid({ limit, showViewAll = true, filterBySize }:
         
         {products.length === 0 ? (
           <div className="text-center py-20">
-            <div className="bg-[#F5E9D3]/10 rounded-3xl p-12 max-w-md mx-auto border border-[#C9B08A]/30 shadow-lg">
-              <p className="text-[#C9B08A] text-lg mb-2">
+            <div className="bg-[#FBF7F1] rounded-3xl p-12 max-w-md mx-auto border border-[#D4AF37]/30 shadow-lg">
+              <p className="text-[#64748B] text-lg mb-2">
                 {filterBySize ? `No products available in size ${filterBySize}` : 'No products available'}
               </p>
-              <p className="text-[#C9B08A]/70">Check back soon for new arrivals</p>
+              <p className="text-[#64748B]/70">Check back soon for new arrivals</p>
             </div>
           </div>
         ) : (
@@ -120,11 +120,11 @@ export default function ProductGrid({ limit, showViewAll = true, filterBySize }:
             {/* ✅ Show size filter info */}
             {filterBySize && (
               <div className="text-center mb-6">
-                <span className="inline-block bg-[#D4AF37]/10 text-[#D4AF37] px-4 py-2 rounded-full text-sm font-medium border border-[#D4AF37]/20">
+                <span className="inline-block bg-[#D4AF37]/10 text-[#B8860B] px-4 py-2 rounded-full text-sm font-medium border border-[#D4AF37]/20">
                   Showing products in size: {filterBySize}
                   <button
                     onClick={() => window.location.reload()}
-                    className="ml-2 text-[#C9B08A] hover:text-[#D4AF37]"
+                    className="ml-2 text-[#64748B] hover:text-[#D4AF37]"
                   >
                     ✕
                   </button>
@@ -158,7 +158,7 @@ export default function ProductGrid({ limit, showViewAll = true, filterBySize }:
               <div className="text-center">
                 <Link 
                   href="/products"
-                  className="group relative bg-gradient-to-r from-[#D4AF37] to-[#c59d2e] text-white border border-[#D4AF37] px-12 py-4 rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden inline-flex items-center gap-3 hover:opacity-90"
+                  className="group relative gold-gradient gold-gradient-hover text-white border border-[#D4AF37] px-12 py-4 rounded-2xl font-semibold text-lg shadow-2xl shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/30 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden inline-flex items-center gap-3"
                 >
                   <span className="relative">Explore Full Collection</span>
                   <svg 

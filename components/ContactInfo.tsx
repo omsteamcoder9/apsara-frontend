@@ -34,32 +34,16 @@ export default function ContactInfo() {
 
   const contactMethods = [
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
       title: 'Email',
       details: contactInfo.contactEmail,
       description: 'Send us an email anytime'
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
-      ),
       title: 'Phone',
       details: contactInfo.contactNumber,
       description: 'Mon-Fri from 9am to 6pm'
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
       title: 'Address',
       details: contactInfo.companyAddress,
       description: ''
@@ -67,43 +51,48 @@ export default function ContactInfo() {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-8 border border-gray-200">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+    <div className="bg-white rounded-lg p-4 sm:p-6 md:p-8 border border-[#D4AF37]/20">
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0F172A] mb-4 sm:mb-5 md:mb-6 text-center sm:text-left">
+        Contact Information
+      </h3>
       
-      <div className="space-y-6">
+      <div className="space-y-3 sm:space-y-4 md:space-y-6">
         {contactMethods.map((method, index) => (
           <div 
             key={index} 
-            className="flex items-start space-x-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-[#ff6b00]/50 transition-colors duration-200"
+            className="flex flex-col p-3 sm:p-4 bg-[#FBF7F1] rounded-lg border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 transition-colors duration-200"
           >
-            <div className="flex-shrink-0 w-12 h-12 bg-[#ff6b00] rounded-lg flex items-center justify-center">
-              <div className="text-white">
-                {method.icon}
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900">{method.title}</h4>
-              <p className="text-gray-800 font-medium">{method.details}</p>
-              <p className="text-gray-500 text-sm">{method.description}</p>
-            </div>
+            <h4 className="font-semibold text-[#0F172A] text-sm sm:text-base text-left">
+              {method.title}
+            </h4>
+            <p className="text-[#0F172A] font-medium text-xs sm:text-sm text-left break-all sm:break-normal mt-1">
+              {method.details}
+            </p>
+            {method.description && (
+              <p className="text-[#64748B] text-[10px] sm:text-xs text-left mt-1">
+                {method.description}
+              </p>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="mt-8 pt-8 border-t border-gray-200">
-        <h4 className="font-semibold text-gray-900 mb-4">Business Hours</h4>
-        <div className="space-y-3 text-gray-700">
-          <div className="flex justify-between items-center p-2 hover:bg-[#ff6b00]/5 rounded-lg transition-colors">
-            <span>Monday - Friday</span>
-            <span className="font-medium text-[#ff6b00]">9:00 AM - 6:00 PM</span>
+      <div className="mt-6 sm:mt-7 md:mt-8 pt-6 sm:pt-7 md:pt-8 border-t border-[#D4AF37]/20">
+        <h4 className="font-semibold text-[#0F172A] text-sm sm:text-base md:text-lg mb-3 sm:mb-4 text-center sm:text-left">
+          Business Hours
+        </h4>
+        <div className="space-y-2 sm:space-y-3">
+          <div className="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-1 xs:gap-0 p-2 hover:bg-[#FBF7F1] rounded-lg transition-colors">
+            <span className="text-xs sm:text-sm text-[#0F172A] text-left xs:text-left">Monday - Friday</span>
+            <span className="font-medium text-[#D4AF37] text-xs sm:text-sm text-left xs:text-right">9:00 AM - 6:00 PM</span>
           </div>
-          <div className="flex justify-between items-center p-2 hover:bg-[#ff6b00]/5 rounded-lg transition-colors">
-            <span>Saturday</span>
-            <span className="font-medium text-[#ff6b00]">10:00 AM - 4:00 PM</span>
+          <div className="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-1 xs:gap-0 p-2 hover:bg-[#FBF7F1] rounded-lg transition-colors">
+            <span className="text-xs sm:text-sm text-[#0F172A] text-left xs:text-left">Saturday</span>
+            <span className="font-medium text-[#D4AF37] text-xs sm:text-sm text-left xs:text-right">10:00 AM - 4:00 PM</span>
           </div>
-          <div className="flex justify-between items-center p-2 hover:bg-red-50/50 rounded-lg transition-colors">
-            <span>Sunday</span>
-            <span className="font-medium text-red-500">Closed</span>
+          <div className="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-1 xs:gap-0 p-2 hover:bg-[#FBF7F1] rounded-lg transition-colors">
+            <span className="text-xs sm:text-sm text-[#0F172A] text-left xs:text-left">Sunday</span>
+            <span className="font-medium text-red-500 text-xs sm:text-sm text-left xs:text-right">Closed</span>
           </div>
         </div>
       </div>

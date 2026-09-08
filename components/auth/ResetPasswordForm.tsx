@@ -49,7 +49,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="space-y-4">
         <div>
-          <label htmlFor="newPassword" className="block text-sm font-medium text-stone-700 mb-2">
+          <label htmlFor="newPassword" className="block text-sm font-medium text-[#0F172A] mb-2">
             New Password
           </label>
           <input
@@ -60,14 +60,14 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
             required
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="relative block w-full px-4 py-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 focus:z-10 text-sm bg-stone-50 hover:bg-white placeholder-stone-400 text-stone-900 transition-all duration-200"
+            className="relative block w-full px-4 py-3 border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:z-10 text-sm bg-[#FBF7F1] hover:bg-white placeholder-[#64748B] text-[#0F172A] transition-all duration-200"
             placeholder="Enter new password"
             minLength={6}
           />
         </div>
 
         <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-stone-700 mb-2">
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#0F172A] mb-2">
             Confirm Password
           </label>
           <input
@@ -78,7 +78,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="relative block w-full px-4 py-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 focus:z-10 text-sm bg-stone-50 hover:bg-white placeholder-stone-400 text-stone-900 transition-all duration-200"
+            className="relative block w-full px-4 py-3 border border-[#D4AF37]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:z-10 text-sm bg-[#FBF7F1] hover:bg-white placeholder-[#64748B] text-[#0F172A] transition-all duration-200"
             placeholder="Confirm new password"
             minLength={6}
           />
@@ -110,7 +110,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="group relative w-full flex justify-center items-center gap-2 py-3 px-4 text-sm font-medium rounded-xl text-white bg-orange-500 hover:bg-orange-600 hover:shadow-orange-500/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all duration-200 shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+          className="group relative w-full flex justify-center items-center gap-2 py-3 px-4 text-sm font-medium rounded-xl text-white gold-gradient gold-gradient-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all duration-200 shadow-lg shadow-[#D4AF37]/20 transform hover:scale-[1.02] active:scale-[0.98] hover:-translate-y-0.5"
         >
           {isLoading ? (
             <>
