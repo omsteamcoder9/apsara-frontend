@@ -12,6 +12,7 @@ import CartDrawer from '@/components/CartDrawer';
 import { fetchCategories } from '@/lib/categoryService';
 import {
   FaSearch,
+  FaHome,
   FaChevronDown,
   FaBars,
   FaUser,
@@ -59,6 +60,10 @@ export default function HeaderClient() {
   const [siteName, setSiteName] = useState('Ebaaz');
   const [categories, setCategories] = useState<Category[]>([]);
   const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
+  
+  // State for bottom nav visibility on scroll
+  const [showBottomNav, setShowBottomNav] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const STATIC_URL = `${process.env.NEXT_PUBLIC_STATIC_URL}`;
   const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -90,6 +95,31 @@ export default function HeaderClient() {
   
   // Ref for the Cart Button to calculate flying coordinates
   const cartButtonRef = useRef<HTMLButtonElement>(null);
+
+  // ------------------------------------------------------------
+  // SCROLL LISTENER FOR BOTTOM NAV
+  // ------------------------------------------------------------
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide bottom nav
+        setShowBottomNav(false);
+      } else {
+        // Scrolling up - show bottom nav
+        setShowBottomNav(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
 
   // ------------------------------------------------------------
   // CART ANIMATION COORDINATES EVENT LISTENER
@@ -416,8 +446,8 @@ export default function HeaderClient() {
       {/* =====================================================
           HEADER
       ===================================================== */}
-      <div className="sticky top-0 z-50">
-        <div className="bg-[#FBF7F1] border-b border-[#D4AF37]/30 shadow-sm">
+<div className="sticky top-0 z-50">
+          <div className="bg-[#FBF7F1] border-b border-[#D4AF37]/30 shadow-sm">
           <div className="max-w-7xl lg:max-w-[1600px] mx-auto grid grid-cols-[auto_1fr] lg:grid-cols-[150px_minmax(0,1fr)] items-start sm:items-center">
 
             {/* =================================================
@@ -425,13 +455,13 @@ export default function HeaderClient() {
             ================================================= */}
             <div className="row-span-2 px-1 sm:px-2 md:px-3 py-2 sm:py-1 flex items-start sm:items-center lg:w-[150px] lg:px-2 lg:py-0 lg:justify-center bg-[#FBF7F1]">
               <Link href="/" className="group relative flex items-center">
-                <div className="relative w-14 h-7 sm:w-28 sm:h-14 md:w-36 md:h-16 lg:w-36 lg:h-20 overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                <div className="relative w-14 h-7 sm:w-28 sm:h-14 md:w-36 md:h-16 lg:w-36 lg:h-20  transition-transform duration-300 group-hover:scale-105 ">
                   <Image
                     src={`${STATIC_URL}/logo.webp`}
                     alt={siteName}
                     fill
                     priority
-                    className="object-contain object-left"
+                    className="object-contain object-left  sm:ml-7 sm:mt-0 mt-1  ml-3"
                   />
                 </div>
               </Link>
@@ -827,6 +857,66 @@ export default function HeaderClient() {
           </div>
         </div>
       </div>
+
+{/* =====================================================
+    MOBILE BOTTOM NAVIGATION - Only shows when scrolling up
+===================================================== */}
+<div 
+  className={`fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-[#FBF7F1] border-t border-[#D4AF37]/30 shadow-2xl transition-transform duration-300 ease-in-out ${
+    showBottomNav ? 'translate-y-0' : 'translate-y-full'
+  }`}
+>
+  <div className="grid grid-cols-5 h-14 sm:h-16">
+    <Link
+      href="/"
+      className="flex flex-col items-center justify-center text-[#0F172A] hover:text-[#D4AF37] transition-colors"
+    >
+      <FaHome className="text-xs sm:text-sm mb-1" />
+      <span className="text-[8px] sm:text-[9px] font-medium">Home</span>
+    </Link>
+
+    <button
+      type="button"
+      onClick={() => setShowSearch(true)}
+      className="flex flex-col items-center justify-center text-[#0F172A] hover:text-[#D4AF37] transition-colors"
+      aria-label="Open Search"
+    >
+      <FaSearch className="text-xs sm:text-sm mb-1" />
+      <span className="text-[8px] sm:text-[9px] font-medium">Search</span>
+    </button>
+
+    <button
+      type="button"
+      onClick={handleOpenCart}
+      className="relative flex flex-col items-center justify-center text-[#0F172A] hover:text-[#D4AF37] transition-colors"
+      aria-label="Shopping Cart"
+    >
+      <FaShoppingCart className="text-xs sm:text-sm mb-1" />
+      <span className="text-[8px] sm:text-[9px] font-medium">Cart</span>
+      {cartItemsCount > 0 && (
+        <span className="absolute top-1.5 left-1/2 translate-x-1.5 gold-gradient text-white text-[6px] sm:text-[7px] font-bold min-w-3.5 h-3.5 sm:min-w-4 sm:h-4 px-0.5 rounded-full flex items-center justify-center shadow-lg">
+          {cartItemsCount > 9 ? '9+' : cartItemsCount}
+        </span>
+      )}
+    </button>
+
+    <Link
+      href="/about"
+      className="flex flex-col items-center justify-center text-[#0F172A] hover:text-[#D4AF37] transition-colors"
+    >
+      <FaUserCircle className="text-xs sm:text-sm mb-1" />
+      <span className="text-[8px] sm:text-[9px] font-medium">About</span>
+    </Link>
+
+    <Link
+      href="/login"
+      className="flex flex-col items-center justify-center text-[#0F172A] hover:text-[#D4AF37] transition-colors"
+    >
+      <FaUser className="text-xs sm:text-sm mb-1" />
+      <span className="text-[8px] sm:text-[9px] font-medium">Login</span>
+    </Link>
+  </div>
+</div>
 
       {/* =====================================================
           MOBILE MENU

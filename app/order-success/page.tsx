@@ -201,7 +201,7 @@ export default function OrderSuccessPage() {
             </Link>
             <Link 
               href="/"
-              className="border-2 border-[#D4AF37] text-[#B8860B] px-6 py-3 rounded-xl hover:gold-gradient hover:text-white hover:shadow-[#D4AF37]/30 transition-all duration-200 font-medium text-center"
+              className="border-2 border-[#D4AF37] text-[#B8860B] px-6 py-3 rounded-xl hover:gold-gradient hover:text-[#D4AF37]/30 hover:shadow-[#D4AF37]/30 transition-all duration-200 font-medium text-center"
               onClick={(e) => {
                 e.preventDefault();
                 router.push('/');

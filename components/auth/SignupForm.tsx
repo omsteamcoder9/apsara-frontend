@@ -151,9 +151,7 @@ export default function SignupForm() {
         <div className="bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-6 sm:p-8 hover:shadow-md transition-shadow duration-200">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-white font-bold text-lg sm:text-xl">AA</span>
-            </div>
+
             <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A]">
               {isGuestUser ? 'Complete Your Account' : 'Create Your Account'}
             </h2>

@@ -14,11 +14,14 @@ import Carousel from '@/components/home/Carousal';
 import AdSection from '@/components/AdSection';
 import HeroSection from '@/components/herosection';
 import TestimonialSection from '@/components/TestimonialSection';
-import BuyingGuideSection from '@/components/BuyingGuideSection';
+import WhyChooseUs from '@/components/whychooseus';
 import SolutionsContactSection from '@/components/SolutionsContactSection';
 import ReviewsAndFAQSection from '@/components/ReviewsAndFAQSection';
 import FeaturesBarSection from '@/components/FeaturesBarSection';
 import CallUsBannerSection from '@/components/CallUsBannerSection';
+// At the top of your HomeClient file with other imports
+import RoutineSection from '@/components/RoutineSection';
+import BeautyNewsletter from '@/components/BeautyNewsletter';
 
 interface HomeClientProps {
   categories: Category[];
@@ -198,6 +201,7 @@ export default function HomeClient({ categories }: HomeClientProps) {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       <HeroSection />
+      <Carousel displayCategories={categories} />
 
       {/* Explore Products Section - Shows ALL categories that have products */}
       {!checkingProducts && visibleCategories.length > 0 && (
@@ -276,15 +280,18 @@ export default function HomeClient({ categories }: HomeClientProps) {
         </section>
       )}
       
-      <Carousel displayCategories={categories} />
+      <WhyChooseUs />
+        <RoutineSection />
 
       <AdSection />
 
-      <BuyingGuideSection/>
+      <FeaturesBarSection />
+
       <SolutionsContactSection />
 
-      <FeaturesBarSection />
       <ReviewsAndFAQSection/>
+     <BeautyNewsletter 
+      />
 
 
       <style jsx global>{`

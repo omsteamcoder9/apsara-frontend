@@ -38,9 +38,7 @@ export default function LoginPage() {
         <div className="max-w-md mx-auto bg-[#FBF7F1] rounded-2xl shadow-sm border border-[#D4AF37]/20 p-8 hover:shadow-md transition-shadow duration-200">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-white font-bold text-xl">AA</span>
-            </div>
+
             <h1 className="text-3xl font-bold text-[#0F172A] mb-2">Welcome Back</h1>
             <p className="text-[#64748B]">Sign in to your account</p>
           </div>

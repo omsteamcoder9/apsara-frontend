@@ -1,51 +1,121 @@
-import { Lock, Truck, ShieldCheck, Headphones } from 'lucide-react';
+'use client';
 
-export default function FeaturesBarSection() {
-  const features = [
-    {
-      icon: <Lock className="w-3.5 h-3.5 xs:w-4 sm:w-5 text-orange-500" />,
-      title: "Secure Payments",
-      description: "100% secure",
-    },
-    {
-      icon: <Truck className="w-3.5 h-3.5 xs:w-4 sm:w-5 text-orange-500" />,
-      title: "Fast Delivery",
-      description: "Quick & reliable",
-    },
-    {
-      icon: <ShieldCheck className="w-3.5 h-3.5 xs:w-4 sm:w-5 text-orange-500" />,
-      title: "Genuine Products",
-      description: "Original items",
-    },
-    {
-      icon: <Headphones className="w-3.5 h-3.5 xs:w-4 sm:w-5 text-orange-500" />,
-      title: "24/7 Support",
-      description: "Here to help",
-    },
-  ];
+import React from 'react';
+import {
+  Sparkles,
+  Heart,
+  Shield,
+  PackageCheck,
+} from 'lucide-react';
 
+interface BeautyTipsHorizontalBannerProps {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  onReadMore?: () => void;
+  items?: Array<{
+    icon: React.ElementType;
+    title: string;
+  }>;
+}
+
+export default function BeautyTipsHorizontalBanner({
+  title = 'Everything You Deserve',
+  description = 'Authentic beauty essentials, thoughtfully selected to make every purchase simple, safe, and special.',
+  onReadMore,
+  items = [
+    {
+      icon: Shield,
+      title: 'Authentic Products',
+    },
+    {
+      icon: Heart,
+      title: 'Trusted Brands',
+    },
+    {
+      icon: Sparkles,
+      title: 'Secure Checkout',
+    },
+    {
+      icon: PackageCheck,
+      title: 'Fast Delivery',
+    },
+  ],
+}: BeautyTipsHorizontalBannerProps) {
   return (
-    <section className="w-full bg-[#0d0d0d] py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 flex justify-center items-center">
-      <div className="max-w-7xl w-full bg-[#121212] border border-neutral-800 rounded-lg xs:rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-3 md:p-4 lg:p-6 shadow-xl">
-        <div className="grid grid-cols-4 gap-1 xs:gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 items-center">
-          {features.map((item, index) => (
-            <div 
-              key={index}
-              className="flex flex-col items-center text-center space-y-0.5 xs:space-y-1 sm:space-y-1.5"
-            >
-              <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-lg xs:rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(249,115,22,0.1)]">
-                {item.icon}
+    <section className="relative w-full overflow-hidden bg-white py-6 sm:py-8 lg:py-10">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+        <div className="relative rounded-2xl bg-gradient-to-r from-[#FBF7F1] via-white to-[#FBF7F1] border border-[#D4AF37]/20 p-4 sm:p-6 lg:p-8 shadow-[0_10px_30px_rgba(212,175,55,0.08)] overflow-hidden">
+
+          {/* Background decorative accents */}
+          <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#D4AF37]/10 to-transparent rounded-full blur-xl pointer-events-none" />
+
+          <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#D4AF37]/10 to-transparent rounded-full blur-xl pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+
+            {/* LEFT COLUMN: CONTENT */}
+            <div className="lg:col-span-4 flex flex-col items-start justify-center">
+
+              {/* Small label */}
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-6 h-[1px] bg-[#D4AF37]" />
+
+                <span className="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
+                  SHOP WITH CONFIDENCE
+                </span>
               </div>
-              <div className="flex flex-col items-center">
-                <h4 className="text-white font-semibold text-[7px] xs:text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm leading-tight truncate max-w-full">
-                  {item.title}
-                </h4>
-                <p className="text-neutral-400 text-[5px] xs:text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] xl:text-[10px] leading-tight truncate max-w-full">
-                  {item.description}
-                </p>
-              </div>
+
+              {/* Heading */}
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-normal text-[#0F172A] tracking-tight leading-tight mb-1 sm:mb-2">
+                {title}
+              </h2>
+
+              {/* Description */}
+              <p className="text-[10px] sm:text-xs text-[#64748B] leading-relaxed max-w-sm">
+                {description}
+              </p>
+
             </div>
-          ))}
+
+            {/* RIGHT COLUMN: BENEFITS */}
+            <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-3 items-center max-[767px]:grid-cols-4 max-[767px]:gap-1">
+
+              {items.map((item, index) => {
+                const IconComponent = item.icon;
+
+                return (
+                  <div
+                    key={index}
+                    className="relative flex flex-col items-center text-center group px-1 max-[767px]:px-0"
+                  >
+
+                    {/* Divider */}
+                    {index > 0 && (
+                      <div className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-12 bg-[#D4AF37]/20" />
+                    )}
+
+                    {/* Icon */}
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D4AF37]/30 bg-white shadow-sm flex items-center justify-center text-[#D4AF37] transition-all duration-300 group-hover:border-[#D4AF37] group-hover:bg-[#FBF7F1] group-hover:shadow-[0_4px_15px_rgba(212,175,55,0.18)] max-[767px]:w-9 max-[767px]:h-9">
+                      <IconComponent
+                        size={16}
+                        strokeWidth={1.5}
+                        className="max-[767px]:w-[13px] max-[767px]:h-[13px]"
+                      />
+                    </div>
+
+                    {/* Title */}
+                    <span className="text-[9px] sm:text-[10px] font-semibold text-[#0F172A] tracking-wide transition-colors group-hover:text-[#B8860B] leading-tight mt-2 max-[767px]:text-[7px] max-[767px]:mt-1">
+                      {item.title}
+                    </span>
+
+                  </div>
+                );
+              })}
+
+            </div>
+
+          </div>
         </div>
       </div>
     </section>

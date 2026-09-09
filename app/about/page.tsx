@@ -72,7 +72,7 @@ const AboutPage: React.FC = () => {
             <div className="lg:col-span-5">
               <div className="relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-xl bg-stone-200 border border-[#D4AF37]/30">
                 <Image
-                  src={`${STATIC_URL}/images/laptop.webp`}
+                  src={`${STATIC_URL}/about.webp`}
                   alt={`${storeName} botanical aesthetic`}
                   fill
                   priority
